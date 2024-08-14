@@ -4,7 +4,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: islasgeci/dummy_transformations:latest
+    image: islasgeci/zenodo_api:latest
     command: bash
     volumes:
       - $PWD:/workdir
+    environment:
+      ACCESS_TOCKEN: $ACCESS_TOKEN
+

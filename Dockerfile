@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.11
 WORKDIR /workdir
 COPY . .
 RUN pip install --upgrade pip && pip install \
@@ -9,3 +9,7 @@ RUN pip install --upgrade pip && pip install \
     pylint \
     pytest \
     pytest-cov
+
+# Instala ShellSpec
+RUN src/install_shellspec.sh
+
