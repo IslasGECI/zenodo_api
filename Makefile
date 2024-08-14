@@ -13,7 +13,7 @@ all: check coverage mutants
 		setup \
 		tests
 
-module = dummy_transformations
+module = zenodo_api
 codecov_token = 6c56bccb-1758-4ed9-8161-97c845591c26
 
 define lint
@@ -68,6 +68,9 @@ setup: clean install
 
 tests:
 	pytest --verbose
+
+tests_spec:
+	shellspec
 
 red: format
 	pytest --verbose \
