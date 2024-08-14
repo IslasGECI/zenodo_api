@@ -51,7 +51,7 @@ format:
 
 init: init_git setup tests
 
-init_git
+init_git:
 	git config --global --add safe.directory /workdir
 	git config --global user.name "Ciencia de Datos • GECI"
 	git config --global user.email "ciencia.datos@islas.org.mx"
