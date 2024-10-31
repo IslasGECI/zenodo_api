@@ -1,5 +1,7 @@
 from zenodo_api.upload_files import call_depositions, load_access_token
 
+import os
+
 
 def tests_call_depositions():
     obtained = call_depositions()
