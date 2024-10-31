@@ -12,7 +12,7 @@ RUN pip install --upgrade pip && pip install \
     pytest \
     pytest-cov
 
-RUN apt update && apt full-upgrade && apt install --yes \
+RUN apt update && apt upgrade --yes && apt install --yes \
     jq
 
 # Instala ShellSpec

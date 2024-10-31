@@ -17,7 +17,7 @@ Describe 'queries to Zenodo API'
       The file $list_file should be exist
     End
     It 'get_bucket'
-      id_new_deposition=$(jq '.[-1] | select(.id) | .id' $list_file)
+      # id_new_deposition=$(jq '.[-1] | select(.id) | .id' $list_file)
     End
   End
 End
