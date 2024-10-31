@@ -32,7 +32,7 @@ def upload_new_file():
 
     bucket_url = empty_upload.json()["links"]["bucket"]
     filename = "tests_file.txt"
-    path = "tests/data/%s" % filename
+    path = f"tests/data/{filename}"
 
     with open(path, "rb") as fp:
         empty_upload = requests.put(
