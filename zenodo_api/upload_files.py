@@ -3,7 +3,10 @@ import os
 
 
 def call_depositions():
-    r = requests.get("https://zenodo.org/api/deposit/depositions")
+    ACCESS_TOKEN = load_access_token()
+    r = requests.get(
+        "https://sandbox.zenodo.org/api/deposit/depositions", [("access_token", ACCESS_TOKEN)]
+    )
     return r
 
 

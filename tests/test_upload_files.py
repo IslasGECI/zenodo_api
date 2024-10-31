@@ -5,6 +5,7 @@ import os
 
 def tests_call_depositions():
     obtained = call_depositions()
+    print(obtained)
     assert obtained.status_code == 200
 
 
