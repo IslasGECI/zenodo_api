@@ -51,15 +51,13 @@ def upload_file(params, bucket_url, filename, path):
 
 
 def upload_metadata(data_dict):
-    r = create_empty_upload()
-    deposition_id = r.json()["id"]
+    empty_upload = create_empty_upload()
+    deposition_id = empty_upload.json()["id"]
     headers = {"Content-Type": "application/json"}
-    data = data_dict
-
     r = requests.put(
         f"https://sandbox.zenodo.org/api/deposit/depositions/{deposition_id}",
         params={"access_token": load_access_token()},
-        data=json.dumps(data),
+        data=json.dumps(data_dict),
         headers=headers,
     )
     return r
