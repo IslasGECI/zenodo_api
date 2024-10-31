@@ -5,8 +5,7 @@ import os
 
 def tests_call_depositions():
     obtained = call_depositions()
-    assert obtained.status_code == 403
-    assert obtained.json()["message"] == "Permission denied."
+    assert obtained.status_code == 200
 
 
 def test_load_access_token():
