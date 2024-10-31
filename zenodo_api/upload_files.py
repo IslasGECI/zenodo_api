@@ -1,2 +1,6 @@
-def add_offset(augend: int, addend: int) -> int:
-    return augend + addend
+import requests
+
+
+def call_depositions():
+    r = requests.get("https://zenodo.org/api/deposit/depositions")
+    return r
