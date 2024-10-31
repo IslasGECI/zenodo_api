@@ -36,7 +36,7 @@ def upload_new_file():
 
     with open(path, "rb") as fp:
         empty_upload = requests.put(
-            "%s/%s" % (bucket_url, filename),
+            f"{bucket_url}/{filename}",
             data=fp,
             params=params,
         )
