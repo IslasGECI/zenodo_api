@@ -12,3 +12,15 @@ def call_depositions():
 
 def load_access_token():
     return os.environ.get("ACCESS_TOKEN")
+
+
+def create_empty_upload():
+    headers = {"Content-Type": "application/json"}
+    params = {"access_token": load_access_token()}
+    r = requests.post(
+        "https://sandbox.zenodo.org/api/deposit/depositions",
+        params=params,
+        json={},
+        headers=headers,
+    )
+    return r
