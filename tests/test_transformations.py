@@ -1,4 +1,4 @@
-import dummy_transformations as dt
+import zenodo_api as dt
 
 
 def test_add_offset():
