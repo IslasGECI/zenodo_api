@@ -23,7 +23,8 @@ def test_create_empty_upload():
 
 
 def tests_upload_new_file():
-    obtained = upload_new_file()
+    file_path = "tests/data/tests_file.txt"
+    obtained = upload_new_file(file_path)
     assert obtained.status_code == 201
 
 
