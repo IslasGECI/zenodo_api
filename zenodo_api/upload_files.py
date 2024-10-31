@@ -34,10 +34,16 @@ def upload_new_file():
     filename = "tests_file.txt"
     path = f"tests/data/{filename}"
 
+    response_upload = upload_file(params, bucket_url, filename, path)
+    return response_upload
+
+
+def upload_file(params, bucket_url, filename, path):
     with open(path, "rb") as file_content:
         response_upload = requests.put(
             f"{bucket_url}/{filename}",
             data=file_content,
             params=params,
         )
+
     return response_upload
