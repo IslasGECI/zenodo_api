@@ -34,10 +34,10 @@ def upload_new_file():
     filename = "tests_file.txt"
     path = f"tests/data/{filename}"
 
-    with open(path, "rb") as fp:
-        empty_upload = requests.put(
+    with open(path, "rb") as file_content:
+        response_upload = requests.put(
             f"{bucket_url}/{filename}",
-            data=fp,
+            data=file_content,
             params=params,
         )
-    return empty_upload
+    return response_upload
