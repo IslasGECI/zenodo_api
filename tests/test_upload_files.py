@@ -1,4 +1,4 @@
-from zenodo_api.upload_files import call_depositions, load_access_token
+from zenodo_api.upload_files import call_depositions, load_access_token, create_empty_upload
 
 import os
 
@@ -12,3 +12,8 @@ def tests_call_depositions():
 def test_load_access_token():
     obtained = load_access_token()
     assert obtained is not None
+
+
+def test_create_empty_upload():
+    obtained = create_empty_upload()
+    assert obtained.status_code == 201
