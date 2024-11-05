@@ -27,13 +27,13 @@ def create_empty_upload():
     return r
 
 
-def upload_new_file():
+def upload_new_file(file_path):
     params = {"access_token": load_access_token()}
     empty_upload = create_empty_upload()
 
     bucket_url = empty_upload.json()["links"]["bucket"]
-    filename = "tests_file.txt"
-    path = f"tests/data/{filename}"
+    filename = os.path.basename(file_path)
+    path = file_path
 
     response_upload = upload_file(params, bucket_url, filename, path)
     return response_upload
