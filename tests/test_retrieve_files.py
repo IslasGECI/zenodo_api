@@ -11,3 +11,5 @@ def tests_retrieve_file():
     obtained = retrieve_file(id, id_file)
     assert obtained.status_code == 200
     gtt.assert_exist(output_file)
+    
+    
