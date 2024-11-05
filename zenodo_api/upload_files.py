@@ -6,7 +6,9 @@ import json
 def call_depositions():
     ACCESS_TOKEN = load_access_token()
     empty_upload = requests.get(
-        "https://sandbox.zenodo.org/api/deposit/depositions", [("access_token", ACCESS_TOKEN)]
+        # /api/deposit/depositions/:id/files/:file_id
+        "https://sandbox.zenodo.org/api/deposit/depositions",
+        [("access_token", ACCESS_TOKEN), ("size", 100)],
     )
     return empty_upload
 
@@ -32,8 +34,8 @@ def upload_new_file(file_path):
     empty_upload = create_empty_upload()
 
     bucket_url = empty_upload.json()["links"]["bucket"]
-    filename = os.path.basename(file_path)
-    path = file_path
+    filename = "tests_file.txt"
+    path = f"tests/data/{filename}"
 
     response_upload = upload_file(params, bucket_url, filename, path)
     return response_upload

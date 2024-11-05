@@ -14,7 +14,6 @@ def tests_call_depositions():
     print(obtained.json())
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(obtained.json(), f, ensure_ascii=False, indent=4)
-    assert False
     assert obtained.status_code == 200
 
 
