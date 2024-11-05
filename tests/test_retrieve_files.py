@@ -9,5 +9,5 @@ def tests_retrieve_file():
     output_file = "paper.pdf"
     gtt.if_exist_remove(output_file)
     obtained = retrieve_file(id, id_file)
-    gtt.assert_exist(output_file)
     assert obtained.status_code == 200
+    gtt.assert_exist(output_file)
