@@ -68,7 +68,7 @@ mutants: setup
 
 setup: clean install
 
-tests: tests_spec
+tests: tests_python
 
 tests_python:
 	pytest --verbose
