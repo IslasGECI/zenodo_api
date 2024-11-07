@@ -2,6 +2,7 @@ from zenodo_api.retrieve import download_file, download_from_filename, search_re
 
 import geci_test_tools as gtt
 import pytest
+import json
 
 
 def tests_download_file():
@@ -26,5 +27,11 @@ def tests_download_from_filename():
 
 def tests_search_record_by_title():
     title = "Prueba"
+
     obtained = search_record_by_title(title)
+
+    with open("data2.json", "w", encoding="utf-8") as f:
+        json.dump(obtained.json(), f, ensure_ascii=False, indent=4)
+
     assert obtained.status_code == 200
+    print(obtained.json())
