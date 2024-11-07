@@ -8,9 +8,11 @@ def retrieve_file(id, id_file):
         f"https://sandbox.zenodo.org/api/deposit/depositions/{id}/files/{id_file}",
         [("access_token", ACCESS_TOKEN), ("size", 100)],
     )
-    response_upload = requests.get(
-        f"https://sandbox.zenodo.org/api/records/{id}/draft/files/paper.pdf/content")
-    
+
+    url = response_upload.json()["links"]["download"]
+
+    response_upload = requests.get(url)
+
     with open("paper.pdf", mode="wb") as file:
         file.write(response_upload.content)
 
