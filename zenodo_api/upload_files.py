@@ -8,7 +8,7 @@ def call_depositions():
     empty_upload = requests.get(
         # /api/deposit/depositions/:id/files/:file_id
         "https://sandbox.zenodo.org/api/deposit/depositions",
-        [("access_token", ACCESS_TOKEN), ("size", 100)],
+        [("access_token", ACCESS_TOKEN), ("size", 200), ("all_versions", "true")],
     )
     return empty_upload
 
