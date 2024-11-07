@@ -14,16 +14,6 @@ def retrieve_file(id, id_file):
     return download_response
 
 
-def get_download_url(id, id_file):
-    url = get_download(id, id_file)["url"]
-    return url
-
-
-def get_filename(id, id_file):
-    filename = get_download(id, id_file)["filename"]
-    return filename
-
-
 def get_download(id, id_file):
     response_info = retrieve_file_info(id, id_file)
     url = response_info.json()["links"]["download"]
