@@ -3,8 +3,8 @@ from zenodo_api.upload_files import load_access_token
 
 
 def retrieve_file(id, id_file):
-    url = get_download_url(id, id_file)
-    filename = get_filename(id, id_file)
+    url = get_download(id, id_file)["url"]
+    filename = get_download(id, id_file)["filename"]
 
     download_response = requests.get(url)
 
