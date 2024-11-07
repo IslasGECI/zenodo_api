@@ -5,12 +5,9 @@ from zenodo_api.upload_files import load_access_token
 def retrieve_file(id, id_file):
 
     download_info = get_download(id, id_file)
-    url = download_info["url"]
-    filename = download_info["filename"]
+    download_response = requests.get(download_info["url"])
 
-    download_response = requests.get(url)
-
-    with open(filename, mode="wb") as file:
+    with open(download_info["filename"], mode="wb") as file:
         file.write(download_response.content)
 
     return download_response
