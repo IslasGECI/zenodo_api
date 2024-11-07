@@ -2,7 +2,7 @@ import requests
 from zenodo_api.upload_files import load_access_token
 
 
-def retrieve_file(id, id_file):
+def download_file(id, id_file):
 
     download_info = get_download(id, id_file)
     download_response = requests.get(download_info["url"])
