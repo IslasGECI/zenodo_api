@@ -28,6 +28,14 @@ def get_filename(id, id_file):
     return filename
 
 
+def get_download(id, id_file):
+    response_info = retrieve_file_info(id, id_file)
+    url = response_info.json()["links"]["download"]
+    filename = response_info.json()["filename"]
+
+    return {"url": url, "filename": filename}
+
+
 def retrieve_file_info(id, id_file):
     ACCESS_TOKEN = load_access_token()
     response_info = requests.get(
