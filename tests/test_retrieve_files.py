@@ -1,4 +1,9 @@
-from zenodo_api.retrieve import download_file, download_from_filename, search_record_by_title
+from zenodo_api.retrieve import (
+    download_file,
+    download_from_filename,
+    search_record_by_title,
+    retrieve_file_info,
+)
 
 import geci_test_tools as gtt
 import pytest
@@ -30,8 +35,10 @@ def tests_search_record_by_title():
 
     obtained = search_record_by_title(title)
 
+    obtained_total_hits = obtained.json()["hits"]["total"]
+    assert obtained_total_hits == 1
+
     with open("data2.json", "w", encoding="utf-8") as f:
         json.dump(obtained.json(), f, ensure_ascii=False, indent=4)
 
     assert obtained.status_code == 200
-    print(obtained.json())
