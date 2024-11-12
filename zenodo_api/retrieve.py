@@ -4,8 +4,9 @@ from zenodo_api.upload_files import load_access_token
 
 def search_record_by_title(title):
     ACCESS_TOKEN = load_access_token()
+    query = f"{title} AND villlasante"
     response_info = requests.get(
-        "https://sandbox.zenodo.org/api/records/124629", params={"access_token": ACCESS_TOKEN}
+        "https://sandbox.zenodo.org/api/records", params={"q": query, "access_token": ACCESS_TOKEN}
     )
     return response_info
 
@@ -16,6 +17,7 @@ def download_from_filename(id, filename):
         f"https://sandbox.zenodo.org/api/deposit/depositions/{id}/files",
         [("access_token", ACCESS_TOKEN), ("size", 0)],
     )
+
     print(response_info.json())
 
 
