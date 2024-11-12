@@ -1,0 +1,172 @@
+{
+    "hits": {
+        "hits": [
+            {
+                "created": "2024-11-07T18:12:37.974588+00:00",
+                "modified": "2024-11-07T18:12:38.466639+00:00",
+                "id": 128040,
+                "conceptrecid": "124629",
+                "doi": "10.5072/zenodo.128040",
+                "conceptdoi": "10.5072/zenodo.124629",
+                "doi_url": "https://handle.stage.datacite.org/10.5072/zenodo.128040",
+                "metadata": {
+                    "title": "Prueba",
+                    "doi": "10.5072/zenodo.128040",
+                    "publication_date": "2024-11-07",
+                    "access_right": "open",
+                    "creators": [
+                        {
+                            "name": "villlasante",
+                            "affiliation": null
+                        }
+                    ],
+                    "version": "v2",
+                    "resource_type": {
+                        "title": "Journal article",
+                        "type": "publication",
+                        "subtype": "article"
+                    },
+                    "license": {
+                        "id": "cc-by-4.0"
+                    },
+                    "relations": {
+                        "version": [
+                            {
+                                "index": 1,
+                                "is_last": true,
+                                "parent": {
+                                    "pid_type": "recid",
+                                    "pid_value": "124629"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "title": "Prueba",
+                "links": {
+                    "self": "https://sandbox.zenodo.org/api/records/128040",
+                    "self_html": "https://sandbox.zenodo.org/records/128040",
+                    "doi": "https://handle.stage.datacite.org/10.5072/zenodo.128040",
+                    "self_doi": "https://handle.stage.datacite.org/10.5072/zenodo.128040",
+                    "self_doi_html": "https://sandbox.zenodo.org/doi/10.5072/zenodo.128040",
+                    "parent": "https://sandbox.zenodo.org/api/records/124629",
+                    "parent_html": "https://sandbox.zenodo.org/records/124629",
+                    "parent_doi": "https://handle.stage.datacite.org/10.5072/zenodo.124629",
+                    "parent_doi_html": "https://sandbox.zenodo.org/doi/10.5072/zenodo.124629",
+                    "self_iiif_manifest": "https://sandbox.zenodo.org/api/iiif/record:128040/manifest",
+                    "self_iiif_sequence": "https://sandbox.zenodo.org/api/iiif/record:128040/sequence/default",
+                    "files": "https://sandbox.zenodo.org/api/records/128040/files",
+                    "media_files": "https://sandbox.zenodo.org/api/records/128040/media-files",
+                    "thumbnails": {
+                        "10": "https://sandbox.zenodo.org/api/iiif/record:128040:China_2004-es.pdf/full/^10,/0/default.jpg",
+                        "50": "https://sandbox.zenodo.org/api/iiif/record:128040:China_2004-es.pdf/full/^50,/0/default.jpg",
+                        "100": "https://sandbox.zenodo.org/api/iiif/record:128040:China_2004-es.pdf/full/^100,/0/default.jpg",
+                        "250": "https://sandbox.zenodo.org/api/iiif/record:128040:China_2004-es.pdf/full/^250,/0/default.jpg",
+                        "750": "https://sandbox.zenodo.org/api/iiif/record:128040:China_2004-es.pdf/full/^750,/0/default.jpg",
+                        "1200": "https://sandbox.zenodo.org/api/iiif/record:128040:China_2004-es.pdf/full/^1200,/0/default.jpg"
+                    },
+                    "archive": "https://sandbox.zenodo.org/api/records/128040/files-archive",
+                    "archive_media": "https://sandbox.zenodo.org/api/records/128040/media-files-archive",
+                    "latest": "https://sandbox.zenodo.org/api/records/128040/versions/latest",
+                    "latest_html": "https://sandbox.zenodo.org/records/128040/latest",
+                    "versions": "https://sandbox.zenodo.org/api/records/128040/versions",
+                    "draft": "https://sandbox.zenodo.org/api/records/128040/draft",
+                    "reserve_doi": "https://sandbox.zenodo.org/api/records/128040/draft/pids/doi",
+                    "access_links": "https://sandbox.zenodo.org/api/records/128040/access/links",
+                    "access_grants": "https://sandbox.zenodo.org/api/records/128040/access/grants",
+                    "access_users": "https://sandbox.zenodo.org/api/records/128040/access/users",
+                    "access_request": "https://sandbox.zenodo.org/api/records/128040/access/request",
+                    "access": "https://sandbox.zenodo.org/api/records/128040/access",
+                    "communities": "https://sandbox.zenodo.org/api/records/128040/communities",
+                    "communities-suggestions": "https://sandbox.zenodo.org/api/records/128040/communities-suggestions",
+                    "requests": "https://sandbox.zenodo.org/api/records/128040/requests"
+                },
+                "updated": "2024-11-07T18:12:38.466639+00:00",
+                "recid": "128040",
+                "revision": 4,
+                "files": [
+                    {
+                        "id": "60efcb0a-501b-432d-814a-d29d7716a492",
+                        "key": "China_2004-es.pdf",
+                        "size": 257490,
+                        "checksum": "md5:db0bbc30da1d2e36d6fe1916351950fb",
+                        "links": {
+                            "self": "https://sandbox.zenodo.org/api/records/128040/files/China_2004-es.pdf/content"
+                        }
+                    }
+                ],
+                "owners": [
+                    {
+                        "id": "23362"
+                    }
+                ],
+                "status": "published",
+                "stats": {
+                    "downloads": 42,
+                    "unique_downloads": 21,
+                    "views": 9,
+                    "unique_views": 8,
+                    "version_downloads": 4,
+                    "version_unique_downloads": 3,
+                    "version_unique_views": 1,
+                    "version_views": 2
+                },
+                "state": "done",
+                "submitted": true
+            }
+        ],
+        "total": 1
+    },
+    "aggregations": {
+        "access_status": {
+            "buckets": [
+                {
+                    "key": "open",
+                    "doc_count": 1,
+                    "label": "Open",
+                    "is_selected": false
+                }
+            ],
+            "label": "Access status"
+        },
+        "resource_type": {
+            "buckets": [
+                {
+                    "key": "publication",
+                    "doc_count": 1,
+                    "label": "Publication",
+                    "is_selected": false,
+                    "inner": {
+                        "buckets": [
+                            {
+                                "key": "publication-article",
+                                "doc_count": 1,
+                                "label": "Journal article",
+                                "is_selected": false
+                            }
+                        ]
+                    }
+                }
+            ],
+            "label": "Resource types"
+        },
+        "subject": {
+            "buckets": [],
+            "label": "Subjects"
+        },
+        "file_type": {
+            "buckets": [
+                {
+                    "key": "pdf",
+                    "doc_count": 1,
+                    "label": "PDF",
+                    "is_selected": false
+                }
+            ],
+            "label": "File type"
+        }
+    },
+    "links": {
+        "self": "https://sandbox.zenodo.org/api/records?page=1&q=Prueba%20AND%20villlasante&size=25&sort=bestmatch"
+    }
+}
