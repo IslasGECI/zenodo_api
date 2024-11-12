@@ -35,7 +35,8 @@ def test_extract_record_id_and_file_id():
     response_file = "tests/data/search_by_query_response.json"
     with open(response_file, "r") as file:
         search_response = json.load(file)
-    extract_record_id_and_file_id(search_response)
+    obtained = extract_record_id_and_file_id(search_response)
+    assert obtained["record_id"] == 128040
 
 
 def tests_search_record_by_title():
