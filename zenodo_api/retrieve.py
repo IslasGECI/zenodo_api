@@ -48,3 +48,7 @@ def retrieve_file_info(id, id_file):
     )
 
     return response_info
+
+
+def extract_record_id_and_file_id(search_response):
+    pass
