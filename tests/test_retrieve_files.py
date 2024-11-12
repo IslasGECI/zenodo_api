@@ -41,7 +41,7 @@ def test_extract_record_id_and_file_id():
     assert obtained["record_id"] == expected_record_id
 
     expected_file_id = "60efcb0a-501b-432d-814a-d29d7716a492"
-    assert obtained["file_id"] == expected_record_id
+    assert obtained["file_id"] == expected_file_id
 
 
 def tests_search_record_by_title():

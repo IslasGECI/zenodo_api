@@ -52,4 +52,6 @@ def retrieve_file_info(id, id_file):
 
 def extract_record_id_and_file_id(search_response):
     record_id = search_response["hits"]["hits"][0]["id"]
-    return {"record_id": record_id}
+    file_id = search_response["hits"]["hits"][0]["files"][0]["id"]
+
+    return {"record_id": record_id, "file_id": file_id}
