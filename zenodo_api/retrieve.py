@@ -1,6 +1,5 @@
 import requests
 from zenodo_api.upload_files import load_access_token
-import json
 
 
 def search_record_by_title(title):
