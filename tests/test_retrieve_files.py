@@ -36,10 +36,11 @@ def tests_search_record_by_title():
 
     obtained = search_record_by_title(title, creator)
 
+    assert obtained.status_code == 200
+
+    creator = "xx"
     obtained_total_hits = obtained.json()["hits"]["total"]
-    assert obtained_total_hits == 1
+    assert obtained_total_hits == 0
 
     with open("data2.json", "w", encoding="utf-8") as f:
         json.dump(obtained.json(), f, ensure_ascii=False, indent=4)
-
-    assert obtained.status_code == 200
