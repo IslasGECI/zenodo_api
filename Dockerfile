@@ -11,7 +11,8 @@ RUN pip install --upgrade pip && pip install \
     mypy \
     pylint \
     pytest \
-    pytest-cov
+    pytest-cov \
+    types-requests
 
 RUN apt update && apt upgrade --yes && apt install --yes \
     jq
