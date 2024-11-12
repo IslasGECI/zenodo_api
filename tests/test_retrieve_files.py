@@ -1,8 +1,9 @@
 from zenodo_api.retrieve import (
     download_file,
     download_from_filename,
-    search_record_by_title,
+    extract_record_id_and_file_id,
     retrieve_file_info,
+    search_record_by_title,
 )
 
 import geci_test_tools as gtt
@@ -28,6 +29,13 @@ def tests_download_from_filename():
     obtained = download_from_filename(id, output_file)
     assert obtained.status_code == 200
     gtt.assert_exist(output_file)
+
+
+def test_extract_record_id_and_file_id():
+    response_file = "tests/data/search_by_query_response.json"
+    with open(response_file, "r") as file:
+        search_response = json.load(file)
+    extract_record_id_and_file_id(search_response)
 
 
 def tests_search_record_by_title():
