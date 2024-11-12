@@ -32,8 +32,9 @@ def tests_download_from_filename():
 
 def tests_search_record_by_title():
     title = "Prueba"
+    creator = "villlasante"
 
-    obtained = search_record_by_title(title)
+    obtained = search_record_by_title(title, creator)
 
     obtained_total_hits = obtained.json()["hits"]["total"]
     assert obtained_total_hits == 1
