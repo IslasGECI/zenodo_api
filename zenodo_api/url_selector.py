@@ -1,4 +1,4 @@
-def url_selector(tests=True):
+def url_selector(tests=False):
     if tests:
         return "https://sandbox.zenodo.org/api"
 
