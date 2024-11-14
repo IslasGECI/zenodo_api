@@ -12,13 +12,11 @@ def search_record_by_title(title, creator):
 
 
 def download_from_filename(id, filename):
-    ACCESS_TOKEN = load_access_token()
-    response_info = requests.get(
-        f"https://sandbox.zenodo.org/api/deposit/depositions/{id}/files",
-        [("access_token", ACCESS_TOKEN), ("size", 0)],
-    )
-
+    response_info = search_record_by_title(id, "villlasante")
     print(response_info.json())
+    extracted_id = extract_record_id_and_file_id(response_info.json())
+    downloaded_file = download_file(extracted_id["record_id"], extracted_id["file_id"])
+    return downloaded_file
 
 
 def download_file(id, id_file):
