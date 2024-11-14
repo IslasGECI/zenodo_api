@@ -39,8 +39,9 @@ def get_download(id, id_file):
 
 def retrieve_file_info(id, id_file):
     ACCESS_TOKEN = load_access_token()
+    url = url_selector(tests=True) + f"/deposit/depositions/{id}/files/{id_file}"
     response_info = requests.get(
-        f"https://sandbox.zenodo.org/api/deposit/depositions/{id}/files/{id_file}",
+        url,
         [("access_token", ACCESS_TOKEN), ("size", 1000)],
     )
 
