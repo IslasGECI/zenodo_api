@@ -2,12 +2,10 @@ from zenodo_api.retrieve import (
     download_file,
     download_file_by_id_and_organization,
     extract_record_id_and_file_id,
-    retrieve_file_info,
     search_record_by_two_parameters,
 )
 
 import geci_test_tools as gtt
-import pytest
 import json
 
 
