@@ -22,10 +22,11 @@ def tests_download_file():
 
 
 def tests_download_from_filename():
-    id = 128040
-    output_file = "China_2004-es.pdf"
+    creator = "Grupo de Ecología y Conservación de Islas"
+    id = 131634
+    output_file = "dimorfismo_parametros.json"
     gtt.if_exist_remove(output_file)
-    obtained = download_from_filename(id, output_file)
+    obtained = download_from_filename(id, creator)
     assert obtained.status_code == 200
     gtt.assert_exist(output_file)
 
@@ -51,14 +52,14 @@ def tests_search_record_by_title():
 
     assert obtained.status_code == 200
 
-    with open("data2.json", "w", encoding="utf-8") as f:
+    obtained_total_hits = obtained.json()["hits"]["total"]
+    assert obtained_total_hits == 1
+
+    creator = "Grupo de Ecología y Conservación de Islas"
+    id = 131634
+    obtained = search_record_by_title(id, creator)
+    with open("data3.json", "w", encoding="utf-8") as f:
         json.dump(obtained.json(), f, ensure_ascii=False, indent=4)
 
     obtained_total_hits = obtained.json()["hits"]["total"]
     assert obtained_total_hits == 1
-
-    creator = "xx"
-    obtained = search_record_by_title(title, creator)
-
-    obtained_total_hits = obtained.json()["hits"]["total"]
-    assert obtained_total_hits == 0

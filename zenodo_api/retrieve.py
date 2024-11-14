@@ -12,8 +12,7 @@ def search_record_by_title(title, creator):
 
 
 def download_from_filename(id, filename):
-    response_info = search_record_by_title(id, "villlasante")
-    print(response_info.json())
+    response_info = search_record_by_title(id, filename)
     extracted_id = extract_record_id_and_file_id(response_info.json())
     downloaded_file = download_file(extracted_id["record_id"], extracted_id["file_id"])
     return downloaded_file
@@ -42,7 +41,7 @@ def retrieve_file_info(id, id_file):
     ACCESS_TOKEN = load_access_token()
     response_info = requests.get(
         f"https://sandbox.zenodo.org/api/deposit/depositions/{id}/files/{id_file}",
-        [("access_token", ACCESS_TOKEN), ("size", 100)],
+        [("access_token", ACCESS_TOKEN), ("size", 1000)],
     )
 
     return response_info
