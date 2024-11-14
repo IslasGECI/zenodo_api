@@ -1,5 +1,5 @@
 def url_selector(tests=True):
-    if tests == True:
+    if tests:
         return "https://sandbox.zenodo.org/api"
-    else:
-        return "https://zenodo.org/api"
+
+    return "https://zenodo.org/api"
