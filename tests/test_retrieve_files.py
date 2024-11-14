@@ -57,7 +57,8 @@ def tests_search_record_by_title():
 
     creator = "Grupo de Ecología y Conservación de Islas"
     id = 131634
-    obtained = search_record_by_two_parameters(id, creator)
+    url_api = url_selector(tests=True)
+    obtained = xxsearch_record_by_two_parameters(id, creator, url_api)
     with open("data3.json", "w", encoding="utf-8") as f:
         json.dump(obtained.json(), f, ensure_ascii=False, indent=4)
 
