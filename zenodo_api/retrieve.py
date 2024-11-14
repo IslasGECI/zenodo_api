@@ -17,6 +17,15 @@ def xxsearch_record_by_two_parameters(parameter_1, parameter_2, url_api):
     return response_info
 
 
+def search_by_doi(doi, url_api):
+    ACCESS_TOKEN = load_access_token()
+    query = f"conceptdoi:{doi}"
+    response_info = requests.get(
+        url_api + "/records", params={"q": query, "access_token": ACCESS_TOKEN}
+    )
+    return response_info
+
+
 def download_file_by_id_and_organization(id, organization):
     response_info = search_record_by_two_parameters(id, organization)
     extracted_id = extract_record_id_and_file_id(response_info.json())

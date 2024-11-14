@@ -3,6 +3,7 @@ from zenodo_api.retrieve import (
     download_file_by_id_and_organization,
     extract_record_id_and_file_id,
     xxsearch_record_by_two_parameters,
+    search_by_doi,
 )
 from zenodo_api.url_selector import url_selector
 import geci_test_tools as gtt
@@ -61,5 +62,14 @@ def tests_search_record_by_title():
     with open("data3.json", "w", encoding="utf-8") as f:
         json.dump(obtained.json(), f, ensure_ascii=False, indent=4)
 
+    obtained_total_hits = obtained.json()["hits"]["total"]
+    assert obtained_total_hits == 1
+
+
+def tests_custom_search():
+    url_api = "https://sandbox.zenodo.org/api"
+    doi = "10.5072/zenodo.131633"
+    obtained = search_by_doi(doi, url_api)
+    assert obtained.status_code == 200
     obtained_total_hits = obtained.json()["hits"]["total"]
     assert obtained_total_hits == 1
