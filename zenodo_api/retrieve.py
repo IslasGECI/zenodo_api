@@ -4,6 +4,10 @@ from zenodo_api.url_selector import url_selector
 
 
 def search_record_by_two_parameters(parameter_1, parameter_2):
+    return xxsearch_record_by_two_parameters(parameter_1, parameter_2)
+
+
+def xxsearch_record_by_two_parameters(parameter_1, parameter_2):
     ACCESS_TOKEN = load_access_token()
     query = f"{parameter_1} AND {parameter_2}"
     url = url_selector(tests=True) + "/records"
