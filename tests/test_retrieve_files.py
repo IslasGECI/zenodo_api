@@ -2,7 +2,6 @@ from zenodo_api.retrieve import (
     download_file,
     download_file_by_id_and_organization,
     extract_record_id_and_file_id,
-    search_record_by_two_parameters,
     xxsearch_record_by_two_parameters,
 )
 from zenodo_api.url_selector import url_selector
