@@ -3,8 +3,9 @@ from zenodo_api.retrieve import (
     download_file_by_id_and_organization,
     extract_record_id_and_file_id,
     search_record_by_two_parameters,
+    xxsearch_record_by_two_parameters,
 )
-
+from zenodo_api.url_selector import url_selector
 import geci_test_tools as gtt
 import json
 
@@ -46,7 +47,8 @@ def tests_search_record_by_title():
     title = "Prueba"
     creator = "villlasante"
 
-    obtained = search_record_by_two_parameters(title, creator)
+    url_api = url_selector(tests=True)
+    obtained = xxsearch_record_by_two_parameters(title, creator, url_api)
 
     assert obtained.status_code == 200
 
