@@ -2,9 +2,9 @@ import requests
 from zenodo_api.upload_files import load_access_token
 
 
-def search_record_by_title(title, creator):
+def search_record_by_two_parameters(parameter_1, parameter_2):
     ACCESS_TOKEN = load_access_token()
-    query = f"{title} AND {creator}"
+    query = f"{parameter_1} AND {parameter_2}"
     response_info = requests.get(
         "https://sandbox.zenodo.org/api/records", params={"q": query, "access_token": ACCESS_TOKEN}
     )
@@ -12,7 +12,7 @@ def search_record_by_title(title, creator):
 
 
 def download_file_by_id_and_organization(id, organization):
-    response_info = search_record_by_title(id, organization)
+    response_info = search_record_by_two_parameters(id, organization)
     extracted_id = extract_record_id_and_file_id(response_info.json())
     downloaded_file = download_file(extracted_id["record_id"], extracted_id["file_id"])
     return downloaded_file

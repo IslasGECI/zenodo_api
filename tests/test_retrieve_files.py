@@ -3,7 +3,7 @@ from zenodo_api.retrieve import (
     download_file_by_id_and_organization,
     extract_record_id_and_file_id,
     retrieve_file_info,
-    search_record_by_title,
+    search_record_by_two_parameters,
 )
 
 import geci_test_tools as gtt
@@ -48,7 +48,7 @@ def tests_search_record_by_title():
     title = "Prueba"
     creator = "villlasante"
 
-    obtained = search_record_by_title(title, creator)
+    obtained = search_record_by_two_parameters(title, creator)
 
     assert obtained.status_code == 200
 
@@ -57,7 +57,7 @@ def tests_search_record_by_title():
 
     creator = "Grupo de Ecología y Conservación de Islas"
     id = 131634
-    obtained = search_record_by_title(id, creator)
+    obtained = search_record_by_two_parameters(id, creator)
     with open("data3.json", "w", encoding="utf-8") as f:
         json.dump(obtained.json(), f, ensure_ascii=False, indent=4)
 
