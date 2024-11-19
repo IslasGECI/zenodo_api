@@ -49,6 +49,14 @@ def get_download(id, id_file):
     return {"url": url, "filename": filename}
 
 
+def xxget_download(id, id_file, url_api):
+    response_info = retrieve_file_info(id, id_file, url_api)
+    url = response_info.json()["links"]["download"]
+    filename = response_info.json()["filename"]
+
+    return {"url": url, "filename": filename}
+
+
 def retrieve_file_info(id, id_file, url_api):
     ACCESS_TOKEN = load_access_token()
     url = url_api + f"/deposit/depositions/{id}/files/{id_file}"
