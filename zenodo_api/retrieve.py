@@ -25,7 +25,7 @@ def download_file_by_id_and_organization(id, organization):
     url_api = url_selector(tests=True)
     response_info = search_record_by_two_parameters(id, organization, url_api)
     extracted_id = extract_record_id_and_file_id(response_info.json())
-    downloaded_file = download_file(extracted_id["record_id"], extracted_id["file_id"])
+    downloaded_file = xxdownload_file(extracted_id["record_id"], extracted_id["file_id"], url_api)
     return downloaded_file
 
 
