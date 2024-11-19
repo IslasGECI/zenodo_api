@@ -31,13 +31,7 @@ def download_file_by_id_and_organization(id, organization):
 
 def download_file(id, id_file):
     url_api = url_selector(tests=True)
-    download_info = get_download(id, id_file, url_api)
-    download_response = requests.get(download_info["url"])
-
-    with open(download_info["filename"], mode="wb") as file:
-        file.write(download_response.content)
-
-    return download_response
+    return xxdownload_file(id, id_file, url_api)
 
 
 def xxdownload_file(id, id_file, url_api):
