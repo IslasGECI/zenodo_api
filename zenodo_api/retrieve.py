@@ -40,6 +40,16 @@ def download_file(id, id_file):
     return download_response
 
 
+def xxdownload_file(id, id_file, url_api):
+    download_info = get_download(id, id_file, url_api)
+    download_response = requests.get(download_info["url"])
+
+    with open(download_info["filename"], mode="wb") as file:
+        file.write(download_response.content)
+
+    return download_response
+
+
 def get_download(id, id_file, url_api):
     response_info = retrieve_file_info(id, id_file, url_api)
     url = response_info.json()["links"]["download"]
