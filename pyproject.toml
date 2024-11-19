@@ -10,6 +10,10 @@ description-file = "README.md"
 home-page = "https://github.com/IslasGECI/zenodo_api"
 module = "zenodo_api"
 requires = [
-    "requests"
+    "requests",
+    "typer[all]",
 ]
 requires-python=">=3.9"
+
+[tool.flit.scripts]
+geci-zenodo = "zenodo_api.cli:cli"
