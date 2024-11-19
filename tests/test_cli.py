@@ -8,6 +8,7 @@ def test_download_from_geci_zenodo():
     result = runner.invoke(cli, ["download-from-geci-zenodo", "--help"])
     assert result.exit_code == 0
     assert " --is-sandbox " in result.stdout
+    assert " --doi " in result.stdout
 
 
 def test_version():
