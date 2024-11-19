@@ -30,8 +30,8 @@ def download_file_by_id_and_organization(id, organization):
 
 
 def download_file(id, id_file):
-
-    download_info = get_download(id, id_file)
+    url_api = url_selector(tests=True)
+    download_info = xxget_download(id, id_file, url_api)
     download_response = requests.get(download_info["url"])
 
     with open(download_info["filename"], mode="wb") as file:
