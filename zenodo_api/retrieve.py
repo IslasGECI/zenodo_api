@@ -41,7 +41,8 @@ def download_file(id, id_file):
 
 
 def get_download(id, id_file):
-    response_info = retrieve_file_info(id, id_file)
+    url_api = url_selector(tests=True)
+    response_info = xxretrieve_file_info(id, id_file, url_api)
     url = response_info.json()["links"]["download"]
     filename = response_info.json()["filename"]
 
