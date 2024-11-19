@@ -27,7 +27,8 @@ def search_by_doi(doi, url_api):
 
 
 def download_file_by_id_and_organization(id, organization):
-    response_info = search_record_by_two_parameters(id, organization)
+    url_api = url_selector(tests=True)
+    response_info = xxsearch_record_by_two_parameters(id, organization, url_api)
     extracted_id = extract_record_id_and_file_id(response_info.json())
     downloaded_file = download_file(extracted_id["record_id"], extracted_id["file_id"])
     return downloaded_file
