@@ -1,5 +1,5 @@
 from zenodo_api.retrieve import (
-    xxdownload_file,
+    download_file,
     download_file_by_id_and_organization,
     extract_record_id_and_file_id,
     search_record_by_two_parameters,
@@ -16,7 +16,7 @@ def tests_download_file():
     output_file = "paper.pdf"
     gtt.if_exist_remove(output_file)
     url_api = url_selector(tests=True)
-    obtained = xxdownload_file(id, id_file, url_api)
+    obtained = download_file(id, id_file, url_api)
     assert obtained.status_code == 200
     gtt.assert_exist(output_file)
 
