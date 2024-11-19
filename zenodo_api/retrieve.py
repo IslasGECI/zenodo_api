@@ -59,6 +59,17 @@ def retrieve_file_info(id, id_file):
     return response_info
 
 
+def xxretrieve_file_info(id, id_file, url_api):
+    ACCESS_TOKEN = load_access_token()
+    url = url_api + f"/deposit/depositions/{id}/files/{id_file}"
+    response_info = requests.get(
+        url,
+        [("access_token", ACCESS_TOKEN), ("size", 1000)],
+    )
+
+    return response_info
+
+
 def extract_record_id_and_file_id(search_response):
     record_id = search_response["hits"]["hits"][0]["id"]
     file_id = search_response["hits"]["hits"][0]["files"][0]["id"]
