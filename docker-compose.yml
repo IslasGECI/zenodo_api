@@ -9,5 +9,5 @@ services:
     volumes:
       - $PWD:/workdir
     environment:
-      ACCESS_TOCKEN: $ACCESS_TOKEN
+      ACCESS_TOKEN: $ACCESS_TOKEN
 
