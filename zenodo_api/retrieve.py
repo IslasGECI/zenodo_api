@@ -29,11 +29,6 @@ def download_file_by_id_and_organization(id, organization):
     return downloaded_file
 
 
-def download_file(id, id_file):
-    url_api = url_selector(tests=True)
-    return xxdownload_file(id, id_file, url_api)
-
-
 def xxdownload_file(id, id_file, url_api):
     download_info = get_download(id, id_file, url_api)
     download_response = requests.get(download_info["url"])
