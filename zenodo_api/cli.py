@@ -11,7 +11,7 @@ def version():
 
 @cli.command()
 def download_from_geci_zenodo(
-    doi: str = typer.Option(), is_sandbox: str = typer.Option(help="Output file path")
+    doi: str = typer.Option(), is_sandbox: bool = typer.Option(False, "--is-sandbox")
 ):
     organization = "Grupo de Ecología y Conservación de Islas"
     download_file_by_id_and_organization(doi, organization, is_sandbox)
