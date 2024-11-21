@@ -7,19 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.4.1] - 2024-04-31
+## [0.1.0] - 2024-11-21
 
 ### Added
-
-### Fixed
-
-### Changed
-- Fix repo path
-- Update actions
-
-### Removed
-
-## [0.4.0] - 2023-08-31
+- `download-from-geci-zenodo`
 
 
 [unreleased]: https://github.com/IslasGECI/zenodo_api/compare/v1.1.1...HEAD
