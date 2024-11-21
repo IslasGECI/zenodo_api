@@ -21,11 +21,6 @@ def search_by_doi(doi, url_api):
     return response_info
 
 
-def download_file_by_id_and_organization(id, organization):
-    is_sandbox = True
-    return xxdownload_file_by_id_and_organization(id, organization, is_sandbox)
-
-
 def xxdownload_file_by_id_and_organization(id, organization, is_sandbox):
     url_api = url_selector(tests=is_sandbox)
     response_info = search_record_by_two_parameters(id, organization, url_api)
