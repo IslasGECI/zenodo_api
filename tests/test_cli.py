@@ -13,9 +13,9 @@ def test_download_from_geci_zenodo():
     assert " --doi " in result.stdout
 
     output_file = "dimorfismo_parametros.json"
-    id = 131634
+    doi = "10.5072/zenodo.131633"
     gtt.if_exist_remove(output_file)
-    result = runner.invoke(cli, ["download-from-geci-zenodo", "--doi", id, "--is-sandbox"])
+    result = runner.invoke(cli, ["download-from-geci-zenodo", "--doi", doi, "--is-sandbox"])
     print("ressult:", result)
     print("ressult.exit_code:", result.exit_code)
     assert result.exit_code == 0
