@@ -1,6 +1,6 @@
 <a href="https://www.islas.org.mx/"><img src="https://www.islas.org.mx/img/logo.svg" align="right" width="256" /></a>
 # Zenodo API
-[![codecov](https://codecov.io/gh/IslasGECI/zenodo_api/graph/badge.svg?token=RY807ST1T1)](https://codecov.io/gh/IslasGECI/zenodo_api)
+[![codecov](https://codecov.io/gh/IslasGECI/zenodo_api/graph/badge.svg?token=EFCmZ2PFzS)](https://codecov.io/gh/IslasGECI/zenodo_api)
 ![example branch
 parameter](https://github.com/IslasGECI/zenodo_api/actions/workflows/actions.yml/badge.svg)
 ![licencia](https://img.shields.io/github/license/IslasGECI/zenodo_api)
