@@ -1,5 +1,5 @@
 import typer
-from zenodo_api.retrieve import download_file_by_id_and_organization
+from zenodo_api.retrieve import download_file_by_doi
 
 cli = typer.Typer()
 
@@ -13,5 +13,4 @@ def version():
 def download_from_geci_zenodo(
     doi: str = typer.Option(), is_sandbox: bool = typer.Option(False, "--is-sandbox")
 ):
-    organization = "Grupo de Ecología y Conservación de Islas"
-    download_file_by_id_and_organization(doi, organization, is_sandbox)
+    download_file_by_doi(doi, is_sandbox)

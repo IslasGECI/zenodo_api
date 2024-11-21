@@ -29,6 +29,14 @@ def download_file_by_id_and_organization(id, organization, is_sandbox):
     return downloaded_file
 
 
+def download_file_by_doi(doi, is_sandbox):
+    url_api = url_selector(tests=is_sandbox)
+    response_info = search_by_doi(doi, url_api)
+    extracted_id = extract_record_id_and_file_id(response_info.json())
+    downloaded_file = download_file(extracted_id["record_id"], extracted_id["file_id"], url_api)
+    return downloaded_file
+
+
 def download_file(id, id_file, url_api):
     download_info = get_download(id, id_file, url_api)
     download_response = requests.get(download_info["url"])
