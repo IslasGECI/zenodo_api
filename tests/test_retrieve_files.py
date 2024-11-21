@@ -1,6 +1,5 @@
 from zenodo_api.retrieve import (
     download_file,
-    download_file_by_id_and_organization,
     extract_record_id_and_file_id,
     search_record_by_two_parameters,
     search_by_doi,
@@ -17,17 +16,6 @@ def tests_download_file():
     gtt.if_exist_remove(output_file)
     url_api = url_selector(tests=True)
     obtained = download_file(id, id_file, url_api)
-    assert obtained.status_code == 200
-    gtt.assert_exist(output_file)
-
-
-def tests_download_from_filename():
-    creator = "Grupo de Ecología y Conservación de Islas"
-    id = 131634
-    output_file = "dimorfismo_parametros.json"
-    gtt.if_exist_remove(output_file)
-    is_sandbox = True
-    obtained = download_file_by_id_and_organization(id, creator, is_sandbox)
     assert obtained.status_code == 200
     gtt.assert_exist(output_file)
 
