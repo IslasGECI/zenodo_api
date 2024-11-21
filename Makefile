@@ -14,7 +14,7 @@ all: check coverage mutants
 		tests
 
 module = zenodo_api
-codecov_token = 6c56bccb-1758-4ed9-8161-97c845591c26
+codecov_token = 212037de-28d8-40e3-b8a3-aefe6541b859
 
 define lint
 	pylint \
