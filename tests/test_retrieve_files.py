@@ -1,6 +1,6 @@
 from zenodo_api.retrieve import (
     download_file,
-    download_file_by_id_and_organization,
+    xxdownload_file_by_id_and_organization,
     extract_record_id_and_file_id,
     search_record_by_two_parameters,
     search_by_doi,
@@ -26,7 +26,8 @@ def tests_download_from_filename():
     id = 131634
     output_file = "dimorfismo_parametros.json"
     gtt.if_exist_remove(output_file)
-    obtained = download_file_by_id_and_organization(id, creator)
+    is_sandbox = True
+    obtained = xxdownload_file_by_id_and_organization(id, creator, is_sandbox)
     assert obtained.status_code == 200
     gtt.assert_exist(output_file)
 
