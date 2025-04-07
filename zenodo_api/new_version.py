@@ -4,13 +4,13 @@ from zenodo_api.url_selector import url_selector
 import json
 
 
-def get_latest_version(RECORD_ID):
-    ACCESS_TOKEN = load_access_token()
-    BASE_URL = url_selector(tests=True) + "/records"
+def get_latest_version(concept_rec_id):
+    access_token = load_access_token()
+    base_url = url_selector(tests=True) + "/records"
 
-    headers = {"Authorization": f"Bearer {ACCESS_TOKEN}"}
+    headers = {"Authorization": f"Bearer {access_token}"}
 
-    response = requests.get(f"{BASE_URL}/{RECORD_ID}", headers=headers)
+    response = requests.get(f"{base_url}/{concept_rec_id}", headers=headers)
 
     print(json.dumps(response.json(), indent=4))
 
