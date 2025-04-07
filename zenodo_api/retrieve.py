@@ -5,7 +5,7 @@ from zenodo_api.url_selector import url_selector
 
 def search_record_by_two_parameters(parameter_1, parameter_2, url_api):
     ACCESS_TOKEN = load_access_token()
-    query = f"{parameter_1} AND {parameter_2}"
+    query = f'"{parameter_1}" AND "{parameter_2}"'
     response_info = requests.get(
         url_api + "/records", params={"q": query, "access_token": ACCESS_TOKEN}
     )

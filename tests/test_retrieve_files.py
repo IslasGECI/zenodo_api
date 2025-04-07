@@ -34,8 +34,8 @@ def test_extract_record_id_and_file_id():
 
 
 def tests_search_record_by_title():
-    title = "Prueba"
-    creator = "villlasante"
+    title = "Updated paper"
+    creator = "CD y Max"
 
     url_api = url_selector(tests=True)
     obtained = search_record_by_two_parameters(title, creator, url_api)
