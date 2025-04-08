@@ -1,8 +1,8 @@
-from zenodo_api.new_version import get_latest_version
+from zenodo_api.new_version import get_latest_version_id
 
 
 def test_get_latest_version():
     concept_rec_id = "131633"
-    obtained = get_latest_version(concept_rec_id)
+    obtained = get_latest_version_id(concept_rec_id)
 
     assert obtained == 137021
