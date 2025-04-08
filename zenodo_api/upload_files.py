@@ -6,7 +6,6 @@ import json
 def call_depositions():
     ACCESS_TOKEN = load_access_token()
     empty_upload = requests.get(
-        # /api/deposit/depositions/:id/files/:file_id
         "https://sandbox.zenodo.org/api/deposit/depositions",
         [("access_token", ACCESS_TOKEN), ("size", 200), ("all_versions", "true")],
     )

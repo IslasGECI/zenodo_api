@@ -12,4 +12,4 @@ def test_create_draft_of_new_version():
     latest_version_id = 137021
     obtained = create_draft_of_new_version(latest_version_id)
 
-    assert 200 <= obtained.status_code < 300
+    assert obtained.status_code == 201
