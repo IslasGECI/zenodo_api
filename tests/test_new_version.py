@@ -12,12 +12,14 @@ def test_get_latest_version_id():
 
 
 def test_create_draft_of_new_version():
-    latest_version_id = 137021
     access_token = load_access_token()
-    requests.delete(
-        f"https://sandbox.zenodo.org/api/deposit/depositions/{latest_version_id}",
-        params={"access_token": access_token},
+    deposition_search = requests.get(
+        "https://sandbox.zenodo.org/api/deposit/depositions",
+        params={"q": "albatros", "access_token": access_token},
     )
+    latest_draft_id = deposition_search.json()[0]["links"]["latest_draft"]
+    requests.delete(latest_draft_id, params={"access_token": access_token})
+    latest_version_id = 137021
     obtained = create_draft_of_new_version(latest_version_id)
 
     assert obtained.status_code == 201
