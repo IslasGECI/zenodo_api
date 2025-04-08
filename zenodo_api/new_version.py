@@ -12,6 +12,4 @@ def get_latest_version(concept_rec_id):
 
     response = requests.get(f"{base_url}/{concept_rec_id}", headers=headers)
 
-    print(json.dumps(response.json(), indent=4))
-
-    return response
+    return response.json()["id"]
