@@ -13,7 +13,7 @@ def search_record_by_two_parameters(parameter_1, parameter_2, url_api):
 
 
 def search_deposition_by_title(title_word, is_sandbox):
-    query = f"{title_word}"
+    query = f'"{title_word}"'
     url_api = url_selector(is_sandbox)
     response_info = requests.get(
         url_api + "/deposit/depositions", params={"q": query, "access_token": load_access_token()}
