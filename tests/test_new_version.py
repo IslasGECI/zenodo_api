@@ -14,7 +14,9 @@ def test_get_latest_version_id():
 
 def test_create_draft_of_new_version():
     access_token = load_access_token()
-    latest_draft_link = search_deposition_by_title("albatros", is_sandbox=True)
+    latest_draft_link = search_deposition_by_title(
+        '"Parámetros para calcular el sexo de Albatros de Laysan"', is_sandbox=True
+    )
     requests.delete(latest_draft_link, params={"access_token": access_token})
     latest_version_id = 137021
     obtained = create_draft_of_new_version(latest_version_id)
