@@ -1,4 +1,7 @@
 from zenodo_api.new_version import create_draft_of_new_version, get_latest_version_id
+from zenodo_api.upload_files import load_access_token
+
+import requests
 
 
 def test_get_latest_version_id():
@@ -10,6 +13,11 @@ def test_get_latest_version_id():
 
 def test_create_draft_of_new_version():
     latest_version_id = 137021
+    access_token = load_access_token()
+    requests.delete(
+        f"https://sandbox.zenodo.org/api/deposit/depositions/{latest_version_id}",
+        params={"access_token": access_token},
+    )
     obtained = create_draft_of_new_version(latest_version_id)
 
     assert obtained.status_code == 201
