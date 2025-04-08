@@ -1,5 +1,6 @@
 from zenodo_api.new_version import create_draft_of_new_version, get_latest_version_id
 from zenodo_api.upload_files import load_access_token
+from zenodo_api.retrieve import search_deposition_by_title
 
 import requests
 
@@ -13,12 +14,8 @@ def test_get_latest_version_id():
 
 def test_create_draft_of_new_version():
     access_token = load_access_token()
-    deposition_search = requests.get(
-        "https://sandbox.zenodo.org/api/deposit/depositions",
-        params={"q": "albatros", "access_token": access_token},
-    )
-    latest_draft_id = deposition_search.json()[0]["links"]["latest_draft"]
-    requests.delete(latest_draft_id, params={"access_token": access_token})
+    latest_draft_link = search_deposition_by_title("albatros", is_sandbox=True)
+    requests.delete(latest_draft_link, params={"access_token": access_token})
     latest_version_id = 137021
     obtained = create_draft_of_new_version(latest_version_id)
 
