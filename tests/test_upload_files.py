@@ -36,6 +36,10 @@ def tests_upload_new_file():
     assert obtained["response_upload"].status_code == 201
     assert "latest_draft" in obtained.keys()
 
+    latest_draft_link = obtained["latest_draft"]
+    time.sleep(1)
+    requests.delete(latest_draft_link, params={"access_token": load_access_token()})
+
 
 def tests_upload_metadata():
     title = "GECI first upload"
