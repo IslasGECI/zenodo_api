@@ -1,4 +1,6 @@
-import json, requests, time
+import json
+import requests
+import time
 
 from zenodo_api.upload_files import (
     call_depositions,
@@ -31,7 +33,7 @@ def test_create_empty_upload():
 def tests_upload_new_file():
     file_path = "tests/data/tests_file.txt"
     obtained = upload_file_in_new_record(file_path)
-    assert obtained.status_code == 201
+    assert obtained["response_upload"].status_code == 201
 
 
 def tests_upload_metadata():
