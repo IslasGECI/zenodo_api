@@ -34,10 +34,12 @@ def upload_file_in_new_record(file_path):
     empty_upload = create_deposition_in_new_record()
 
     bucket_url = empty_upload.json()["links"]["bucket"]
-    print(empty_upload.json())
 
     response_upload = upload_file(params, bucket_url, file_path)
-    return {"response_upload": response_upload}
+    return {
+        "response_upload": response_upload,
+        "latest_draft": empty_upload.json()["links"]["latest_draft"],
+    }
 
 
 def upload_file(params, bucket_url, file_path):
