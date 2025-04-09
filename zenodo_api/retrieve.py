@@ -18,6 +18,7 @@ def search_deposition_by_title(title_word, is_sandbox):
     response_info = requests.get(
         url_api + "/deposit/depositions", params={"q": query, "access_token": load_access_token()}
     )
+    print(response_info.json())
     latest_draft_link = response_info.json()[0]["links"]["latest_draft"]
     return latest_draft_link
 
