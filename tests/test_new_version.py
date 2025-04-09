@@ -20,5 +20,6 @@ def test_create_draft_of_new_version():
     requests.delete(latest_draft_link, params={"access_token": access_token})
     latest_version_id = 137021
     obtained = create_draft_of_new_version(latest_version_id)
+    requests.delete(latest_draft_link, params={"access_token": access_token})
 
     assert obtained.status_code == 201
