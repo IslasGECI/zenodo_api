@@ -1,6 +1,7 @@
 import requests
 import os
 import json
+import pathlib
 
 
 def call_depositions():
@@ -34,16 +35,16 @@ def upload_new_file(file_path):
 
     bucket_url = empty_upload.json()["links"]["bucket"]
     filename = "tests_file.txt"
-    path = f"tests/data/{filename}"
 
-    response_upload = upload_file(params, bucket_url, filename, path)
+    response_upload = upload_file(params, bucket_url, file_path)
     return response_upload
 
 
-def upload_file(params, bucket_url, filename, path):
+def upload_file(params, bucket_url, file_path):
+    path = pathlib.Path(file_path)
     with open(path, "rb") as file_content:
         response_upload = requests.put(
-            f"{bucket_url}/{filename}",
+            f"{bucket_url}/{path.name}",
             data=file_content,
             params=params,
         )
