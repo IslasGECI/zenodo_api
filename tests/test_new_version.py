@@ -3,6 +3,7 @@ from zenodo_api.upload_files import load_access_token
 from zenodo_api.retrieve import search_deposition_by_title
 
 import requests
+import time
 
 
 def test_get_latest_version_id():
@@ -18,8 +19,12 @@ def test_create_draft_of_new_version():
         "Parámetros para calcular el sexo de Albatros de Laysan", is_sandbox=True
     )
     requests.delete(latest_draft_link, params={"access_token": access_token})
+
     latest_version_id = 137021
     obtained = create_draft_of_new_version(latest_version_id)
-    requests.delete(latest_draft_link, params={"access_token": access_token})
-
     assert obtained.status_code == 201
+    time.sleep(1)
+    latest_draft_link = search_deposition_by_title(
+        "Parámetros para calcular el sexo de Albatros de Laysan", is_sandbox=True
+    )
+    requests.delete(latest_draft_link, params={"access_token": access_token})
