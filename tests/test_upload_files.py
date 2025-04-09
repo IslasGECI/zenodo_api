@@ -1,4 +1,4 @@
-import json
+import json, requests, time
 
 from zenodo_api.upload_files import (
     call_depositions,
@@ -7,6 +7,7 @@ from zenodo_api.upload_files import (
     upload_file_in_new_record,
     upload_metadata,
 )
+from zenodo_api.retrieve import search_deposition_by_title
 
 
 def tests_call_depositions():
@@ -34,9 +35,10 @@ def tests_upload_new_file():
 
 
 def tests_upload_metadata():
+    title = "GECI first upload"
     data_dict = {
         "metadata": {
-            "title": "My first upload",
+            "title": title,
             "upload_type": "poster",
             "description": "This is my first upload",
             "creators": [{"name": "Doe, John", "affiliation": "Zenodo"}],
@@ -44,3 +46,8 @@ def tests_upload_metadata():
     }
     obtained = upload_metadata(data_dict)
     assert obtained.status_code == 200
+
+    time.sleep(1)
+    access_token = load_access_token()
+    latest_draft_link = search_deposition_by_title(title, is_sandbox=True)
+    requests.delete(latest_draft_link, params={"access_token": access_token})
