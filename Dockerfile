@@ -2,7 +2,8 @@ FROM python:3.11
 WORKDIR /workdir
 COPY . .
 ENV PATH="/root/.local/lib/shellspec:$PATH"
-RUN pip install --upgrade pip && pip install \
+
+RUN pip install --upgrade pip setuptools && pip install \
     batcat \
     black \
     flake8 \
