@@ -3,8 +3,8 @@ import json
 from zenodo_api.upload_files import (
     call_depositions,
     load_access_token,
-    create_empty_upload,
-    upload_new_file,
+    create_deposition_in_new_record,
+    upload_file_in_new_record,
     upload_metadata,
 )
 
@@ -23,13 +23,13 @@ def test_load_access_token():
 
 
 def test_create_empty_upload():
-    obtained = create_empty_upload()
+    obtained = create_deposition_in_new_record()
     assert obtained.status_code == 201
 
 
 def tests_upload_new_file():
     file_path = "tests/data/tests_file.txt"
-    obtained = upload_new_file(file_path)
+    obtained = upload_file_in_new_record(file_path)
     assert obtained.status_code == 201
 
 

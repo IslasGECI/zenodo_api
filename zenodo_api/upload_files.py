@@ -17,7 +17,7 @@ def load_access_token():
     return os.environ.get("ACCESS_TOKEN")
 
 
-def create_empty_upload():
+def create_deposition_in_new_record():
     headers = {"Content-Type": "application/json"}
     params = {"access_token": load_access_token()}
     r = requests.post(
@@ -29,9 +29,9 @@ def create_empty_upload():
     return r
 
 
-def upload_new_file(file_path):
+def upload_file_in_new_record(file_path):
     params = {"access_token": load_access_token()}
-    empty_upload = create_empty_upload()
+    empty_upload = create_deposition_in_new_record()
 
     bucket_url = empty_upload.json()["links"]["bucket"]
     filename = "tests_file.txt"
@@ -53,7 +53,7 @@ def upload_file(params, bucket_url, file_path):
 
 
 def upload_metadata(data_dict):
-    empty_upload = create_empty_upload()
+    empty_upload = create_deposition_in_new_record()
     deposition_id = empty_upload.json()["id"]
     headers = {"Content-Type": "application/json"}
     r = requests.put(
