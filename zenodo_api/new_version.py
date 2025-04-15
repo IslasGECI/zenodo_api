@@ -32,6 +32,6 @@ def upload_file_in_new_version(latest_version_id, file_path):
     requests.delete(previous_file, params={"access_token": access_token})
     bucket_url = new_deposition.json()["links"]["bucket"]
 
-    params = {"access_token": load_access_token()}
+    params = {"access_token": access_token}
     response = upload_file(params, bucket_url, file_path)
     return response
