@@ -40,4 +40,5 @@ def test_upload_file_in_new_version():
     file_path = "tests/data/tests_file.txt"
 
     obtained = upload_file_in_new_version(latest_version_id, file_path)
-    assert obtained.status_code == 200
+    print(obtained.json(), "upload file in new version")
+    assert obtained.status_code == 201
