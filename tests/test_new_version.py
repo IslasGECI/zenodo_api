@@ -44,4 +44,8 @@ def test_upload_file_in_new_version():
     assert obtained.status_code == 201
     time.sleep(1)
     latest_draft_link = search_deposition_by_title(title, is_sandbox=True)
+
+    expected_number_of_files = 1
+    obtained_number_of_files = len(latest_draft_link.json()["files"])
+    assert obtained_number_of_files == expected_number_of_files
     requests.delete(latest_draft_link, params={"access_token": access_token})
