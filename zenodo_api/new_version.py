@@ -26,7 +26,10 @@ def create_draft_of_new_version(latest_version_id):
 
 
 def upload_file_in_new_version(latest_version_id, file_path):
+    access_token = load_access_token()
     new_deposition = create_draft_of_new_version(latest_version_id)
+    previous_file = new_deposition.json()["files"][0]["links"]["self"]
+    requests.delete(previous_file, params={"access_token": access_token})
     bucket_url = new_deposition.json()["links"]["bucket"]
 
     params = {"access_token": load_access_token()}
