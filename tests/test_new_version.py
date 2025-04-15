@@ -46,6 +46,7 @@ def test_upload_file_in_new_version():
     latest_draft_link = search_deposition_by_title(title, is_sandbox=True)
 
     expected_number_of_files = 1
-    obtained_number_of_files = len(latest_draft_link.json()["files"])
+    response = requests.get(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
+    obtained_number_of_files = len(response.json()["files"])
     assert obtained_number_of_files == expected_number_of_files
     requests.delete(latest_draft_link, params={"access_token": access_token})
