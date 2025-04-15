@@ -1,4 +1,8 @@
-from zenodo_api.new_version import create_draft_of_new_version, get_latest_version_id
+from zenodo_api.new_version import (
+    create_draft_of_new_version,
+    get_latest_version_id,
+    upload_file_in_new_version,
+)
 from zenodo_api.upload_files import load_access_token
 from zenodo_api.retrieve import search_deposition_by_title
 
