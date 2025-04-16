@@ -1,5 +1,5 @@
 import requests
-from zenodo_api.upload_files import load_access_token, upload_file
+from zenodo_api.upload_files import load_access_token, upload_file, upload_metadata
 from zenodo_api.url_selector import url_selector
 
 
@@ -29,6 +29,10 @@ def upload_file_in_new_version(latest_version_id, file_path):
     access_token = load_access_token()
     new_deposition = create_draft_of_new_version(latest_version_id)
     headers = {"Authorization": f"Bearer {access_token}"}
+
+    new_deposition_id = new_deposition.json()["id"]
+    previous_metadata = new_deposition.json()["metadata"]
+    upload_metadata({"metadata": {"title": previous_metadata["title"]}}, new_deposition_id)
 
     for files in new_deposition.json()["files"]:
         requests.delete(files["links"]["self"], headers=headers)
