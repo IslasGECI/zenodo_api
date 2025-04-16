@@ -56,9 +56,9 @@ def upload_metadata(data_dict):
     empty_upload = create_deposition_in_new_record()
     deposition_id = empty_upload.json()["id"]
     headers = {"Authorization": f"Bearer {load_access_token()}", "Content-Type": "application/json"}
-    r = requests.put(
+    response = requests.put(
         f"https://sandbox.zenodo.org/api/deposit/depositions/{deposition_id}",
         data=json.dumps(data_dict),
         headers=headers,
     )
-    return r
+    return response
