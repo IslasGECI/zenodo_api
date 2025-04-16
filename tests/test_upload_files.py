@@ -57,4 +57,4 @@ def tests_upload_metadata():
     time.sleep(1)
     access_token = load_access_token()
     latest_draft_link = search_deposition_by_title(title, is_sandbox=True)
-    requests.delete(latest_draft_link, params={"access_token": access_token})
+    requests.delete(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
