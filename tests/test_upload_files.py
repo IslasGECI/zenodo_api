@@ -37,7 +37,9 @@ def tests_upload_new_file():
 
     latest_draft_link = obtained["latest_draft"]
     time.sleep(1)
-    response = requests.delete(latest_draft_link, params={"access_token": load_access_token()})
+    response = requests.delete(
+        latest_draft_link, headers={"Authorization": f"Bearer {load_access_token()}"}
+    )
     assert response.status_code == 204
 
 
