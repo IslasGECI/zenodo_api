@@ -17,7 +17,9 @@ def search_deposition_by_title(title_word, is_sandbox):
     query = f'"{title_word}"'
     url_api = url_selector(is_sandbox)
     response_info = requests.get(
-        url_api + "/deposit/depositions", params={"q": query, "access_token": load_access_token()}
+        url_api + "/deposit/depositions",
+        params={"q": query},
+        headers={"Authorization": f"Bearer {load_access_token()}"},
     )
     latest_draft_link = response_info.json()[0]["links"]["latest_draft"]
     return latest_draft_link
@@ -26,7 +28,9 @@ def search_deposition_by_title(title_word, is_sandbox):
 def search_by_doi(doi, url_api):
     query = f"conceptdoi:{doi}"
     response_info = requests.get(
-        url_api + "/records", params={"q": query, "access_token": load_access_token()}
+        url_api + "/records",
+        params={"q": query},
+        headers={"Authorization": f"Bearer {load_access_token()}"},
     )
     return response_info
 
