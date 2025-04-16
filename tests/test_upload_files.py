@@ -56,7 +56,11 @@ def tests_upload_metadata():
     obtained = upload_metadata_in_new_record(data_dict)
     assert obtained.status_code == 200
 
+    obtained_json = obtained.json()
+    assert "version" in obtained_json["metadata"].keys()
+
     time.sleep(1)
     access_token = load_access_token()
     latest_draft_link = search_deposition_by_title(title, is_sandbox=True)
+
     requests.delete(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
