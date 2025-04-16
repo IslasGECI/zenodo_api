@@ -1,5 +1,5 @@
 import requests
-from zenodo_api.upload_files import load_access_token, upload_file
+from zenodo_api.upload_files import load_access_token, xxupload_file
 from zenodo_api.url_selector import url_selector
 
 
@@ -34,5 +34,5 @@ def upload_file_in_new_version(latest_version_id, file_path):
     bucket_url = new_deposition.json()["links"]["bucket"]
 
     params = {"access_token": access_token}
-    response = upload_file(params, bucket_url, file_path)
+    response = xxupload_file(bucket_url, file_path)
     return response
