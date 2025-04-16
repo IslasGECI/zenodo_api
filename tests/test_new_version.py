@@ -46,6 +46,8 @@ def test_upload_file_in_new_version():
 
     expected_number_of_files = 1
     response = requests.get(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
+    response_json = response.json()
+    assert response_json["metadata"]["access_right"] == "restricted"
     obtained_number_of_files = len(response.json()["files"])
     assert obtained_number_of_files == expected_number_of_files
     requests.delete(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
