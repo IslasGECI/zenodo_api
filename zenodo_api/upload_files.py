@@ -61,6 +61,7 @@ def upload_metadata_in_new_record(data_dict):
 
 def upload_metadata(data_dict, deposition_id):
     data_dict["metadata"]["version"] = "X.Y.Z"
+    data_dict["metadata"]["creators"] = [{"name": "Grupo de Ecología y Conservación de Islas"}]
     headers = {"Authorization": f"Bearer {load_access_token()}", "Content-Type": "application/json"}
     response = requests.put(
         f"https://sandbox.zenodo.org/api/deposit/depositions/{deposition_id}",
