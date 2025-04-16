@@ -43,6 +43,11 @@ def upload_file_in_new_record(file_path):
 
 
 def upload_file(params, bucket_url, file_path):
+    return xxupload_file(bucket_url, file_path)
+
+
+def xxupload_file(bucket_url, file_path):
+    params = {"access_token": load_access_token()}
     path = pathlib.Path(file_path)
     with open(path, "rb") as file_content:
         response_upload = requests.put(
