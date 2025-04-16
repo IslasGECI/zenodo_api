@@ -50,7 +50,6 @@ def tests_upload_metadata():
             "title": title,
             "upload_type": "poster",
             "description": "This is my first upload",
-            "creators": [{"name": "Doe, John", "affiliation": "Zenodo"}],
         }
     }
     obtained = upload_metadata_in_new_record(data_dict)
@@ -58,6 +57,10 @@ def tests_upload_metadata():
 
     obtained_json = obtained.json()
     assert "version" in obtained_json["metadata"].keys()
+    assert (
+        "Grupo de Ecología y Conservación de Islas"
+        in obtained_json["metadata"]["creators"][0]["name"]
+    )
 
     time.sleep(1)
     access_token = load_access_token()
