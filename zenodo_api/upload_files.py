@@ -35,7 +35,7 @@ def upload_file_in_new_record(file_path):
 
     bucket_url = empty_upload.json()["links"]["bucket"]
 
-    response_upload = upload_file(params, bucket_url, file_path)
+    response_upload = xxupload_file(bucket_url, file_path)
     return {
         "response_upload": response_upload,
         "latest_draft": empty_upload.json()["links"]["latest_draft"],
