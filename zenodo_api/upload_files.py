@@ -52,13 +52,19 @@ def upload_file(bucket_url, file_path):
     return response_upload
 
 
-def upload_metadata(data_dict):
+def upload_metadata_in_new_record(data_dict):
     empty_upload = create_deposition_in_new_record()
     deposition_id = empty_upload.json()["id"]
+    response = upload_metadata(data_dict, deposition_id)
+    return response
+
+
+def upload_metadata(data_dict, deposition_id):
     headers = {"Authorization": f"Bearer {load_access_token()}", "Content-Type": "application/json"}
     response = requests.put(
         f"https://sandbox.zenodo.org/api/deposit/depositions/{deposition_id}",
         data=json.dumps(data_dict),
         headers=headers,
     )
+
     return response

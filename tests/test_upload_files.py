@@ -7,7 +7,7 @@ from zenodo_api.upload_files import (
     load_access_token,
     create_deposition_in_new_record,
     upload_file_in_new_record,
-    upload_metadata,
+    upload_metadata_in_new_record,
 )
 from zenodo_api.retrieve import search_deposition_by_title
 
@@ -53,7 +53,7 @@ def tests_upload_metadata():
             "creators": [{"name": "Doe, John", "affiliation": "Zenodo"}],
         }
     }
-    obtained = upload_metadata(data_dict)
+    obtained = upload_metadata_in_new_record(data_dict)
     assert obtained.status_code == 200
 
     time.sleep(1)
