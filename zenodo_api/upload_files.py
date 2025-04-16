@@ -42,13 +42,13 @@ def upload_file_in_new_record(file_path):
 
 
 def upload_file(bucket_url, file_path):
-    params = {"access_token": load_access_token()}
+    headers = {"Authorization": f"Bearer {load_access_token()}"}
     path = pathlib.Path(file_path)
     with open(path, "rb") as file_content:
         response_upload = requests.put(
             f"{bucket_url}/{path.name}",
             data=file_content,
-            params=params,
+            headers=headers,
         )
 
     return response_upload
