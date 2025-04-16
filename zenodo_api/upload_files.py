@@ -19,12 +19,12 @@ def load_access_token():
 
 def create_deposition_in_new_record():
     headers = {"Authorization": f"Bearer {load_access_token()}", "Content-Type": "application/json"}
-    r = requests.post(
+    response = requests.post(
         "https://sandbox.zenodo.org/api/deposit/depositions",
         json={},
         headers=headers,
     )
-    return r
+    return response
 
 
 def upload_file_in_new_record(file_path):
