@@ -43,3 +43,7 @@ def upload_file_in_new_version(concept_rec_id, file_path):
 
     response = upload_file(bucket_url, file_path)
     return response
+
+
+def publish_new_version(latest_version_id, file_path, is_test):
+    return "New version published"
