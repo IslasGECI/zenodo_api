@@ -25,8 +25,9 @@ def create_draft_of_new_version(latest_version_id):
     return response
 
 
-def upload_file_in_new_version(latest_version_id, file_path):
+def upload_file_in_new_version(concept_rec_id, file_path):
     access_token = load_access_token()
+    latest_version_id = get_latest_version_id(concept_rec_id)
     new_deposition = create_draft_of_new_version(latest_version_id)
     headers = {"Authorization": f"Bearer {access_token}"}
 

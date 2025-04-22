@@ -36,10 +36,10 @@ def test_upload_file_in_new_version():
     title = "Parámetros para calcular el sexo de Albatros de Laysan"
     latest_draft_link = search_deposition_by_title(title, is_sandbox=True)
     requests.delete(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
-    latest_version_id = 137021
+    concept_rec_id = "131633"
     file_path = "tests/data/tests_file.txt"
 
-    obtained = upload_file_in_new_version(latest_version_id, file_path)
+    obtained = upload_file_in_new_version(concept_rec_id, file_path)
     assert obtained.status_code == 201
     print(obtained.json())
     time.sleep(1)
