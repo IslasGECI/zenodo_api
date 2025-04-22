@@ -61,7 +61,6 @@ def upload_metadata_in_new_record(data_dict):
 
 def upload_metadata(previous_metadata, deposition_id):
     default_metadata = {
-        "version": "X.Y.Z",
         "creators": [{"name": "Grupo de Ecología y Conservación de Islas"}],
         "access_right": "restricted",
     }

@@ -56,7 +56,6 @@ def tests_upload_metadata():
     assert obtained.status_code == 200
 
     obtained_json = obtained.json()
-    assert "version" in obtained_json["metadata"].keys()
     assert (
         "Grupo de Ecología y Conservación de Islas"
         in obtained_json["metadata"]["creators"][0]["name"]
