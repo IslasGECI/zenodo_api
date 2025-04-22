@@ -33,7 +33,7 @@ def upload_file_in_new_version(latest_version_id, file_path):
     new_deposition_json = new_deposition.json()
     new_deposition_id = new_deposition_json["id"]
     previous_metadata = new_deposition_json["metadata"]
-    upload_metadata({"metadata": {"title": previous_metadata["title"]}}, new_deposition_id)
+    upload_metadata(previous_metadata, new_deposition_id)
 
     for files in new_deposition_json["files"]:
         requests.delete(files["links"]["self"], headers=headers)

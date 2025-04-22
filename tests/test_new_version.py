@@ -41,6 +41,7 @@ def test_upload_file_in_new_version():
 
     obtained = upload_file_in_new_version(latest_version_id, file_path)
     assert obtained.status_code == 201
+    print(obtained.json())
     time.sleep(1)
     latest_draft_link = search_deposition_by_title(title, is_sandbox=True)
 

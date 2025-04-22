@@ -55,21 +55,22 @@ def upload_file(bucket_url, file_path):
 def upload_metadata_in_new_record(data_dict):
     empty_upload = create_deposition_in_new_record()
     deposition_id = empty_upload.json()["id"]
-    response = upload_metadata(data_dict, deposition_id)
+    response = upload_metadata(data_dict["metadata"], deposition_id)
     return response
 
 
-def upload_metadata(data_dict, deposition_id):
+def upload_metadata(previous_metadata, deposition_id):
     default_metadata = {
         "version": "X.Y.Z",
         "creators": [{"name": "Grupo de Ecología y Conservación de Islas"}],
         "access_right": "restricted",
     }
-    data_dict["metadata"].update(default_metadata)
+    previous_metadata.update(default_metadata)
+    new_metadata = {"metadata": previous_metadata}
     headers = {"Authorization": f"Bearer {load_access_token()}", "Content-Type": "application/json"}
     response = requests.put(
         f"https://sandbox.zenodo.org/api/deposit/depositions/{deposition_id}",
-        data=json.dumps(data_dict),
+        data=json.dumps(new_metadata),
         headers=headers,
     )
 
