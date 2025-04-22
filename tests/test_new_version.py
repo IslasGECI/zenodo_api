@@ -2,6 +2,7 @@ from zenodo_api.new_version import (
     create_draft_of_new_version,
     get_latest_version_id,
     upload_file_in_new_version,
+    publish_new_version,
 )
 from zenodo_api.upload_files import load_access_token
 from zenodo_api.retrieve import search_deposition_by_title
@@ -41,7 +42,6 @@ def test_upload_file_in_new_version():
 
     obtained = upload_file_in_new_version(concept_rec_id, file_path)
     assert obtained.status_code == 201
-    print(obtained.json())
     time.sleep(1)
     latest_draft_link = search_deposition_by_title(title, is_sandbox=True)
 
@@ -52,3 +52,11 @@ def test_upload_file_in_new_version():
     obtained_number_of_files = len(response.json()["files"])
     assert obtained_number_of_files == expected_number_of_files
     requests.delete(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
+
+
+def test_publish_new_version():
+    latest_version_id = 131633
+    file_path = "tests/data/tests_file.txt"
+    is_test = True
+    obtained = publish_new_version(latest_version_id, file_path, is_test)
+    assert obtained == "New version published"
