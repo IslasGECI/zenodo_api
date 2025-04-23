@@ -12,7 +12,7 @@ def test_download_from_geci_zenodo():
     assert " --is-sandbox " in result.stdout
     assert " --doi " in result.stdout
 
-    output_file = "dimorfismo_parametros.json"
+    output_file = "tests_file.txt"
     doi = "10.5072/zenodo.131633"
     gtt.if_exist_remove(output_file)
     result = runner.invoke(cli, ["download-from-geci-zenodo", "--doi", doi, "--is-sandbox"])

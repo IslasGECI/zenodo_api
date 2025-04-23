@@ -15,7 +15,7 @@ def test_get_latest_version_id():
     concept_rec_id = "131633"
     obtained = get_latest_version_id(concept_rec_id)
 
-    assert obtained == 137021
+    assert obtained == 200716
 
 
 def test_create_draft_of_new_version():
@@ -63,8 +63,8 @@ def test_publish_new_version():
 
 
 def test_live_publish_new_version():
-    latest_version_id = 131633
+    concept_rec_id = "200738"
     file_path = "tests/data/tests_file.txt"
     is_test = False
-    obtained = publish_new_version(latest_version_id, file_path, is_test)
+    obtained = publish_new_version(concept_rec_id, file_path, is_test)
     assert obtained.status_code == 202
