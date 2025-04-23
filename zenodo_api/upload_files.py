@@ -60,10 +60,7 @@ def upload_metadata_in_new_record(data_dict):
 
 
 def upload_metadata(previous_metadata, deposition_id):
-    default_metadata = {
-        "creators": [{"name": "Grupo de Ecología y Conservación de Islas"}],
-        "access_right": "restricted",
-    }
+    default_metadata = {"creators": [{"name": "Grupo de Ecología y Conservación de Islas"}]}
     previous_metadata.update(default_metadata)
     new_metadata = {"metadata": previous_metadata}
     headers = {"Authorization": f"Bearer {load_access_token()}", "Content-Type": "application/json"}

@@ -60,7 +60,7 @@ def tests_upload_metadata():
         "Grupo de Ecología y Conservación de Islas"
         in obtained_json["metadata"]["creators"][0]["name"]
     )
-    assert obtained_json["metadata"]["access_right"] == "restricted"
+    assert obtained_json["metadata"]["access_right"] == "open"
     time.sleep(1)
     access_token = load_access_token()
     latest_draft_link = search_deposition_by_title(title, is_sandbox=True)
