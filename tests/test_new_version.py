@@ -9,6 +9,8 @@ from zenodo_api.retrieve import search_deposition_by_title
 
 import requests
 import time
+import os
+import pytest
 
 
 def test_get_latest_version_id():
@@ -62,6 +64,7 @@ def test_publish_new_version():
     assert obtained == "New version published"
 
 
+@pytest.mark.skipif(os.getenv("GITHUB_ACTIONS"), reason="Solo se ejecuta en GitHub Actions")
 def test_live_publish_new_version():
     concept_rec_id = "200738"
     file_path = "tests/data/tests_file.txt"

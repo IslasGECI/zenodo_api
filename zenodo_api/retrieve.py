@@ -1,7 +1,6 @@
 import requests
 from zenodo_api.upload_files import load_access_token
 from zenodo_api.url_selector import url_selector
-from pprint import pprint
 
 
 def search_record_by_two_parameters(parameter_1, parameter_2, url_api):
@@ -75,7 +74,6 @@ def retrieve_file_info(id, id_file, url_api):
 
 def extract_record_id_and_file_id(search_response):
     record_id = search_response["hits"]["hits"][0]["id"]
-    pprint(search_response)
     file_id = search_response["hits"]["hits"][0]["files"][0]["id"]
 
     return {"record_id": record_id, "file_id": file_id}
