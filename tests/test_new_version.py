@@ -60,3 +60,11 @@ def test_publish_new_version():
     is_test = True
     obtained = publish_new_version(latest_version_id, file_path, is_test)
     assert obtained == "New version published"
+
+
+def test_live_publish_new_version():
+    latest_version_id = 131633
+    file_path = "tests/data/tests_file.txt"
+    is_test = False
+    obtained = publish_new_version(latest_version_id, file_path, is_test)
+    assert obtained.status_code == 202
