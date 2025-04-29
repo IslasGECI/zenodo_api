@@ -9,8 +9,9 @@ runner = CliRunner()
 def test_download_from_geci_zenodo():
     result = runner.invoke(cli, ["download-from-geci-zenodo", "--help"])
     assert result.exit_code == 0
-    assert " --is-sandbox " in result.stdout
-    assert " --doi " in result.stdout
+    print("ressult.stdout:", result.stdout)
+    assert " --is-sandbox " in str(result.stdout)
+    assert " --doi " in str(result.stdout)
 
     output_file = "tests_file.txt"
     doi = "10.5072/zenodo.131633"
