@@ -4,8 +4,13 @@ from zenodo_api.url_selector import url_selector
 
 
 def get_latest_version_id(concept_rec_id):
+    is_sandbox = True
+    return xxget_latest_version_id(concept_rec_id, is_sandbox)
+
+
+def xxget_latest_version_id(concept_rec_id, is_sandbox):
     access_token = load_access_token()
-    base_url = url_selector(tests=True) + "/records"
+    base_url = url_selector(tests=is_sandbox) + "/records"
 
     headers = {"Authorization": f"Bearer {access_token}"}
 
