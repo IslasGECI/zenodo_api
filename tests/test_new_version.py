@@ -55,14 +55,6 @@ def test_upload_file_in_new_version():
     requests.delete(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
 
 
-def test_publish_new_version():
-    latest_version_id = 131633
-    file_path = "tests/data/tests_file.txt"
-    is_test = True
-    obtained = publish_new_version(latest_version_id, file_path, is_test)
-    assert obtained == "New version published"
-
-
 @pytest.mark.skipif(os.getenv("GITHUB_ACTIONS") is None, reason="Solo se ejecuta en GitHub Actions")
 def test_live_publish_new_version():
     concept_rec_id = "200738"
