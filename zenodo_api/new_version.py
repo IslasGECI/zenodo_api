@@ -53,18 +53,15 @@ def publish_new_version(concept_rec_id, file_path, is_test):
     if is_test:
         return "New version published"
 
-    access_token = load_access_token()
     latest_version_id = get_latest_version_id(concept_rec_id)
     new_deposition = create_draft_of_new_version(latest_version_id)
-    headers = {"Authorization": f"Bearer {access_token}"}
 
     new_deposition_json = new_deposition.json()
     new_deposition_id = new_deposition_json["id"]
     previous_metadata = new_deposition_json["metadata"]
     upload_metadata(previous_metadata, new_deposition_id)
 
-    for files in new_deposition_json["files"]:
-        requests.delete(files["links"]["self"], headers=headers)
+    delete_previous_files(new_deposition_json)
 
     bucket_url = new_deposition_json["links"]["bucket"]
 
@@ -74,6 +71,8 @@ def publish_new_version(concept_rec_id, file_path, is_test):
 
     print(f"{base_url}/{new_deposition_id}/actions/publish")
 
+    access_token = load_access_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
     response = requests.post(
         f"{base_url}/{new_deposition_id}/actions/publish",
         headers=headers,
