@@ -1,7 +1,6 @@
 from zenodo_api import cli
 from typer.testing import CliRunner
 import geci_test_tools as gtt
-import re
 
 runner = CliRunner()
 
