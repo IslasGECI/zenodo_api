@@ -64,7 +64,7 @@ def publish_new_version(concept_rec_id, file_path, is_test):
 
     upload_file(bucket_url, file_path)
 
-    base_url = url_selector(tests=True) + "/deposit/depositions"
+    base_url = url_selector(tests=is_test) + "/deposit/depositions"
 
     print(f"{base_url}/{new_deposition_id}/actions/publish")
 

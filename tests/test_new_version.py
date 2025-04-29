@@ -59,6 +59,6 @@ def test_upload_file_in_new_version():
 def test_live_publish_new_version():
     concept_rec_id = "200738"
     file_path = "tests/data/tests_file.txt"
-    is_test = False
+    is_test = True
     obtained = publish_new_version(concept_rec_id, file_path, is_test)
     assert obtained.status_code == 202
