@@ -7,7 +7,7 @@ runner = CliRunner()
 
 
 def test_download_from_geci_zenodo():
-    result = runner.invoke(cli, ["download-from-geci-zenodo", "--help"], env={"CLICOLOR": "0"})
+    result = runner.invoke(cli, ["download-from-geci-zenodo", "--help"])
     assert result.exit_code == 0
     assert " --is-sandbox " in gtt.strip_ansi_sequences(result.stdout)
     assert " --doi " in gtt.strip_ansi_sequences(result.stdout)
@@ -28,4 +28,9 @@ def test_version():
     assert " version " in gtt.strip_ansi_sequences(result.stdout)
 
     result = runner.invoke(cli, ["version", "--help"])
+    assert result.exit_code == 0
+
+
+def test_publish_to_geci_zenodo():
+    result = runner.invoke(cli, ["publish-to-geci-zenodo", "--help"])
     assert result.exit_code == 0
