@@ -32,7 +32,7 @@ def xxcreate_draft_of_new_version(latest_version_id, is_sandbox):
 
 def upload_file_in_new_version(concept_rec_id, file_path):
     latest_version_id = get_latest_version_id(concept_rec_id, is_sandbox=True)
-    new_deposition = create_draft_of_new_version(latest_version_id)
+    new_deposition = xxcreate_draft_of_new_version(latest_version_id, is_sandbox=True)
 
     new_deposition_json = new_deposition.json()
     new_deposition_id = new_deposition_json["id"]
@@ -56,7 +56,7 @@ def delete_previous_files(new_deposition_json):
 
 def publish_new_version(concept_rec_id, file_path, is_test):
     latest_version_id = get_latest_version_id(concept_rec_id, is_sandbox=is_test)
-    new_deposition = create_draft_of_new_version(latest_version_id)
+    new_deposition = xxcreate_draft_of_new_version(latest_version_id, is_sandbox=is_test)
 
     new_deposition_json = new_deposition.json()
     new_deposition_id = new_deposition_json["id"]
