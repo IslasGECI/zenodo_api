@@ -37,11 +37,7 @@ def publish_new_version(concept_rec_id, file_path, is_sandbox):
     new_deposition = open_new_deposition(concept_rec_id, is_sandbox)
 
     new_deposition_json = new_deposition.json()
-    upload_new_deposition_metadata(new_deposition_json)
-    delete_previous_files(new_deposition_json)
-    bucket_url = new_deposition_json["links"]["bucket"]
-
-    upload_file(bucket_url, file_path)
+    upload_file_in_new_deposition(new_deposition_json, file_path)
 
     access_token = load_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
