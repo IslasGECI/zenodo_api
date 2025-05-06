@@ -48,8 +48,8 @@ def open_new_deposition(concept_rec_id, is_test):
     return new_deposition
 
 
-def publish_new_version(concept_rec_id, file_path, is_test):
-    new_deposition = open_new_deposition(concept_rec_id, is_test)
+def publish_new_version(concept_rec_id, file_path, is_sandbox):
+    new_deposition = open_new_deposition(concept_rec_id, is_sandbox)
 
     new_deposition_json = new_deposition.json()
     new_deposition_id = new_deposition_json["id"]
@@ -62,7 +62,7 @@ def publish_new_version(concept_rec_id, file_path, is_test):
 
     upload_file(bucket_url, file_path)
 
-    base_url = url_selector(tests=is_test) + "/deposit/depositions"
+    base_url = url_selector(tests=is_sandbox) + "/deposit/depositions"
 
     print(f"{base_url}/{new_deposition_id}/actions/publish")
 
