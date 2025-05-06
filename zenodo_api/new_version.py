@@ -28,10 +28,10 @@ def create_draft_of_new_version(latest_version_id, is_sandbox):
 def upload_file_in_new_version(concept_rec_id, file_path, is_sandbox):
     new_deposition = open_new_deposition(concept_rec_id, is_sandbox)
     new_deposition_json = new_deposition.json()
-    return xxupload_file_in_new_version(new_deposition_json, file_path, is_sandbox)
+    return xxupload_file_in_new_version(new_deposition_json, file_path)
 
 
-def xxupload_file_in_new_version(new_deposition_json, file_path, is_sandbox):
+def xxupload_file_in_new_version(new_deposition_json, file_path):
     upload_new_deposition_metadata(new_deposition_json)
     delete_previous_files(new_deposition_json)
     bucket_url = new_deposition_json["links"]["bucket"]

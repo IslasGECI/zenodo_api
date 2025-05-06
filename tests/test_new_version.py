@@ -1,8 +1,9 @@
 from zenodo_api.new_version import (
     create_draft_of_new_version,
     get_latest_version_id,
-    upload_file_in_new_version,
+    xxupload_file_in_new_version,
     publish_new_version,
+    open_new_deposition,
 )
 from zenodo_api.upload_files import load_access_token
 from zenodo_api.retrieve import search_deposition_by_title
@@ -44,7 +45,9 @@ def test_upload_file_in_new_version():
     concept_rec_id = "131633"
     file_path = "tests/data/tests_file.txt"
 
-    obtained = upload_file_in_new_version(concept_rec_id, file_path, is_sandbox)
+    new_deposition = open_new_deposition(concept_rec_id, is_sandbox)
+    new_deposition_json = new_deposition.json()
+    obtained = xxupload_file_in_new_version(new_deposition_json, file_path)
     assert obtained.status_code == 201
     time.sleep(1)
     latest_draft_link = search_deposition_by_title(title, is_sandbox)
