@@ -42,16 +42,14 @@ def upload_file_in_new_version(concept_rec_id, file_path, is_sandbox):
     return response
 
 
-def delete_previous_files(new_deposition_json):
-    access_token = load_access_token()
-    headers = {"Authorization": f"Bearer {access_token}"}
-    for files in new_deposition_json["files"]:
-        requests.delete(files["links"]["self"], headers=headers)
+def open_new_deposition(concept_rec_id, is_test):
+    latest_version_id = get_latest_version_id(concept_rec_id, is_sandbox=is_test)
+    new_deposition = create_draft_of_new_version(latest_version_id, is_sandbox=is_test)
+    return new_deposition
 
 
 def publish_new_version(concept_rec_id, file_path, is_test):
-    latest_version_id = get_latest_version_id(concept_rec_id, is_sandbox=is_test)
-    new_deposition = create_draft_of_new_version(latest_version_id, is_sandbox=is_test)
+    new_deposition = open_new_deposition(concept_rec_id, is_test)
 
     new_deposition_json = new_deposition.json()
     new_deposition_id = new_deposition_json["id"]
@@ -76,3 +74,10 @@ def publish_new_version(concept_rec_id, file_path, is_test):
     )
 
     return response
+
+
+def delete_previous_files(new_deposition_json):
+    access_token = load_access_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
+    for files in new_deposition_json["files"]:
+        requests.delete(files["links"]["self"], headers=headers)
