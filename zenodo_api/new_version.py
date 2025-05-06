@@ -51,9 +51,7 @@ def publish_new_version(concept_rec_id, file_path, is_sandbox):
     new_deposition = open_new_deposition(concept_rec_id, is_sandbox)
 
     new_deposition_json = new_deposition.json()
-    new_deposition_id = new_deposition_json["id"]
-    previous_metadata = new_deposition_json["metadata"]
-    upload_metadata(previous_metadata, new_deposition_id)
+    upload_new_deposition_metadata(new_deposition_json)
 
     delete_previous_files(new_deposition_json)
 
@@ -63,16 +61,20 @@ def publish_new_version(concept_rec_id, file_path, is_sandbox):
 
     base_url = url_selector(tests=is_sandbox) + "/deposit/depositions"
 
-    print(f"{base_url}/{new_deposition_id}/actions/publish")
-
     access_token = load_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     response = requests.post(
-        f"{base_url}/{new_deposition_id}/actions/publish",
+        f"{base_url}/{new_deposition_json['id']}/actions/publish",
         headers=headers,
     )
 
     return response
+
+
+def upload_new_deposition_metadata(new_deposition_json):
+    new_deposition_id = new_deposition_json["id"]
+    previous_metadata = new_deposition_json["metadata"]
+    upload_metadata(previous_metadata, new_deposition_id)
 
 
 def delete_previous_files(new_deposition_json):
