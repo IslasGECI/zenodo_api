@@ -55,7 +55,7 @@ def delete_previous_files(new_deposition_json):
 
 
 def publish_new_version(concept_rec_id, file_path, is_test):
-    latest_version_id = get_latest_version_id(concept_rec_id)
+    latest_version_id = xxget_latest_version_id(concept_rec_id, is_sandbox=is_test)
     new_deposition = create_draft_of_new_version(latest_version_id)
 
     new_deposition_json = new_deposition.json()
