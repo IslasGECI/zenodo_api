@@ -27,22 +27,16 @@ def create_draft_of_new_version(latest_version_id, is_sandbox):
 
 def upload_file_in_new_version(concept_rec_id, file_path, is_sandbox):
     new_deposition = open_new_deposition(concept_rec_id, is_sandbox)
-
     new_deposition_json = new_deposition.json()
+    return xxupload_file_in_new_version(new_deposition_json, file_path, is_sandbox)
+
+
+def xxupload_file_in_new_version(new_deposition_json, file_path, is_sandbox):
     upload_new_deposition_metadata(new_deposition_json)
-
     delete_previous_files(new_deposition_json)
-
     bucket_url = new_deposition_json["links"]["bucket"]
-
     response = upload_file(bucket_url, file_path)
     return response
-
-
-def open_new_deposition(concept_rec_id, is_test):
-    latest_version_id = get_latest_version_id(concept_rec_id, is_sandbox=is_test)
-    new_deposition = create_draft_of_new_version(latest_version_id, is_sandbox=is_test)
-    return new_deposition
 
 
 def publish_new_version(concept_rec_id, file_path, is_sandbox):
@@ -50,23 +44,26 @@ def publish_new_version(concept_rec_id, file_path, is_sandbox):
 
     new_deposition_json = new_deposition.json()
     upload_new_deposition_metadata(new_deposition_json)
-
     delete_previous_files(new_deposition_json)
-
     bucket_url = new_deposition_json["links"]["bucket"]
 
     upload_file(bucket_url, file_path)
 
-    base_url = url_selector(tests=is_sandbox) + "/deposit/depositions"
-
     access_token = load_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
+    base_url = url_selector(tests=is_sandbox) + "/deposit/depositions"
     response = requests.post(
         f"{base_url}/{new_deposition_json['id']}/actions/publish",
         headers=headers,
     )
 
     return response
+
+
+def open_new_deposition(concept_rec_id, is_test):
+    latest_version_id = get_latest_version_id(concept_rec_id, is_sandbox=is_test)
+    new_deposition = create_draft_of_new_version(latest_version_id, is_sandbox=is_test)
+    return new_deposition
 
 
 def upload_new_deposition_metadata(new_deposition_json):
