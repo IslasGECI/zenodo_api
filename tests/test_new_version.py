@@ -50,7 +50,7 @@ def test_upload_file_in_new_deposition():
     obtained = upload_file_in_new_deposition(new_deposition_json, file_path)
     assert obtained.status_code == 201
     time.sleep(1)
-    latest_draft_link = search_deposition_by_title(title, is_sandbox)
+    latest_draft_link = new_deposition_json["links"]["latest_draft"]
 
     expected_number_of_files = 1
     response = requests.get(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
