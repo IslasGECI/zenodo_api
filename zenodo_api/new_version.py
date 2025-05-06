@@ -15,8 +15,13 @@ def get_latest_version_id(concept_rec_id, is_sandbox):
 
 
 def create_draft_of_new_version(latest_version_id):
+    is_sandbox = True
+    return xxcreate_draft_of_new_version(latest_version_id, is_sandbox)
+
+
+def xxcreate_draft_of_new_version(latest_version_id, is_sandbox):
     access_token = load_access_token()
-    base_url = url_selector(tests=True) + "/deposit/depositions"
+    base_url = url_selector(tests=is_sandbox) + "/deposit/depositions"
 
     headers = {"Authorization": f"Bearer {access_token}"}
 
