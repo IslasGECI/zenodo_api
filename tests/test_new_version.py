@@ -1,7 +1,7 @@
 from zenodo_api.new_version import (
     create_draft_of_new_version,
     get_latest_version_id,
-    xxupload_file_in_new_version,
+    upload_file_in_new_version,
     publish_new_version,
 )
 from zenodo_api.upload_files import load_access_token
@@ -35,7 +35,7 @@ def test_create_draft_of_new_version():
     requests.delete(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
 
 
-def test_xxupload_file_in_new_version():
+def test_upload_file_in_new_version():
     access_token = load_access_token()
     title = "Parámetros para calcular el sexo de Albatros de Laysan"
     is_sandbox = True
@@ -44,7 +44,7 @@ def test_xxupload_file_in_new_version():
     concept_rec_id = "131633"
     file_path = "tests/data/tests_file.txt"
 
-    obtained = xxupload_file_in_new_version(concept_rec_id, file_path, is_sandbox)
+    obtained = upload_file_in_new_version(concept_rec_id, file_path, is_sandbox)
     assert obtained.status_code == 201
     time.sleep(1)
     latest_draft_link = search_deposition_by_title(title, is_sandbox)
