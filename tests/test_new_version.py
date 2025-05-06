@@ -1,6 +1,6 @@
 from zenodo_api.new_version import (
     create_draft_of_new_version,
-    xxget_latest_version_id,
+    get_latest_version_id,
     upload_file_in_new_version,
     publish_new_version,
 )
@@ -16,7 +16,7 @@ import pytest
 def test_get_latest_version_id():
     concept_rec_id = "131633"
     is_sandbox = True
-    obtained = xxget_latest_version_id(concept_rec_id, is_sandbox)
+    obtained = get_latest_version_id(concept_rec_id, is_sandbox)
 
     assert obtained == 200716
 
