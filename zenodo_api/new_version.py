@@ -29,9 +29,7 @@ def upload_file_in_new_version(concept_rec_id, file_path, is_sandbox):
     new_deposition = open_new_deposition(concept_rec_id, is_sandbox)
 
     new_deposition_json = new_deposition.json()
-    new_deposition_id = new_deposition_json["id"]
-    previous_metadata = new_deposition_json["metadata"]
-    upload_metadata(previous_metadata, new_deposition_id)
+    upload_new_deposition_metadata(new_deposition_json)
 
     delete_previous_files(new_deposition_json)
 
