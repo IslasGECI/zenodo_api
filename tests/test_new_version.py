@@ -1,5 +1,5 @@
 from zenodo_api.new_version import (
-    xxcreate_draft_of_new_version,
+    create_draft_of_new_version,
     get_latest_version_id,
     upload_file_in_new_version,
     publish_new_version,
@@ -28,7 +28,7 @@ def test_create_draft_of_new_version():
     requests.delete(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
 
     latest_version_id = 137021
-    obtained = xxcreate_draft_of_new_version(latest_version_id, is_sandbox=True)
+    obtained = create_draft_of_new_version(latest_version_id, is_sandbox=True)
     assert obtained.status_code == 201
     time.sleep(1)
     latest_draft_link = search_deposition_by_title(title, is_sandbox=True)
