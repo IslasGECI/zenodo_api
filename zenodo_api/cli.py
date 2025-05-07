@@ -26,4 +26,5 @@ def publish_new_version(
     """
     Publish a new version of a file in Zenodo.
     """
-    _publish_new_version(concept_record_id, file_path, is_sandbox)
+    response = _publish_new_version(concept_record_id, file_path, is_sandbox)
+    print(response.status_code)
