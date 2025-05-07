@@ -33,3 +33,21 @@ def test_version():
 def test_publish_new_version():
     result = runner.invoke(cli, ["publish-new-version", "--help"])
     assert result.exit_code == 0
+    assert " --concept-record-id " in gtt.strip_ansi_sequences(result.stdout)
+    assert " --file-path " in gtt.strip_ansi_sequences(result.stdout)
+    assert " --is-sandbox " in gtt.strip_ansi_sequences(result.stdout)
+
+    concept_rec_id = 200738
+    file_path = "tests/data/tests_cli_file.md"
+    result = runner.invoke(
+        cli,
+        [
+            "publish-new-version",
+            "--concept-record-id",
+            concept_rec_id,
+            "--file-path",
+            file_path,
+            "--is-sandbox",
+        ],
+    )
+    assert result.exit_code == 0
