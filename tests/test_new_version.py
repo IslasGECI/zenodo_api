@@ -2,7 +2,7 @@ from zenodo_api.new_version import (
     create_draft_of_new_version,
     get_latest_version_id,
     upload_file_in_new_deposition,
-    publish_new_version,
+    _publish_new_version,
     open_new_deposition,
 )
 from zenodo_api.upload_files import load_access_token
@@ -65,5 +65,5 @@ def test_live_publish_new_version():
     concept_rec_id = 200738
     file_path = "tests/data/tests_file.txt"
     is_test = True
-    obtained = publish_new_version(concept_rec_id, file_path, is_test)
+    obtained = _publish_new_version(concept_rec_id, file_path, is_test)
     assert obtained.status_code == 202

@@ -3,7 +3,7 @@ from zenodo_api.upload_files import load_access_token, upload_file, upload_metad
 from zenodo_api.url_selector import url_selector
 
 
-def publish_new_version(concept_rec_id, file_path, is_sandbox):
+def _publish_new_version(concept_rec_id, file_path, is_sandbox):
     new_deposition = open_new_deposition(concept_rec_id, is_sandbox)
 
     new_deposition_json = new_deposition.json()
