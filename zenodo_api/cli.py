@@ -17,5 +17,5 @@ def download_from_geci_zenodo(
 
 
 @cli.command()
-def publish_to_geci_zenodo():
+def publish_new_version():
     pass

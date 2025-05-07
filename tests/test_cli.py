@@ -30,6 +30,6 @@ def test_version():
     assert result.exit_code == 0
 
 
-def test_publish_to_geci_zenodo():
-    result = runner.invoke(cli, ["publish-to-geci-zenodo", "--help"])
+def test_publish_new_version():
+    result = runner.invoke(cli, ["publish-new-version", "--help"])
     assert result.exit_code == 0
