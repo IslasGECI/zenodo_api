@@ -15,7 +15,7 @@ import pytest
 
 
 def test_get_latest_version_id():
-    concept_rec_id = "131633"
+    concept_rec_id = 131633
     is_sandbox = True
     obtained = get_latest_version_id(concept_rec_id, is_sandbox)
 
