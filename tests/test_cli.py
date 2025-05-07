@@ -52,3 +52,4 @@ def test_publish_new_version():
     )
     print(result.stdout)
     assert result.exit_code == 0
+    assert 202 in result.stdout
