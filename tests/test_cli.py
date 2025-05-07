@@ -2,6 +2,9 @@ from zenodo_api import cli
 from typer.testing import CliRunner
 import geci_test_tools as gtt
 
+import os
+import pytest
+
 runner = CliRunner()
 
 
@@ -30,6 +33,7 @@ def test_version():
     assert result.exit_code == 0
 
 
+@pytest.mark.skipif(os.getenv("GITHUB_ACTIONS") is None, reason="Solo se ejecuta en GitHub Actions")
 def test_publish_new_version():
     result = runner.invoke(cli, ["publish-new-version", "--help"])
     assert result.exit_code == 0

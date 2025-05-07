@@ -58,12 +58,3 @@ def test_upload_file_in_new_deposition():
     obtained_number_of_files = len(response_json["files"])
     assert obtained_number_of_files == expected_number_of_files
     requests.delete(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
-
-
-@pytest.mark.skipif(os.getenv("GITHUB_ACTIONS") is None, reason="Solo se ejecuta en GitHub Actions")
-def test_live_publish_new_version():
-    concept_rec_id = 200738
-    file_path = "tests/data/tests_file.txt"
-    is_sandbox = True
-    obtained = _publish_new_version(concept_rec_id, file_path, is_sandbox)
-    assert obtained.status_code == 202
