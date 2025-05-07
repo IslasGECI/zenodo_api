@@ -42,7 +42,7 @@ def test_upload_file_in_new_deposition():
     is_sandbox = True
     latest_draft_link = search_deposition_by_title(title, is_sandbox)
     requests.delete(latest_draft_link, headers={"Authorization": f"Bearer {access_token}"})
-    concept_rec_id = "131633"
+    concept_rec_id = 131633
     file_path = "tests/data/tests_file.txt"
 
     new_deposition = open_new_deposition(concept_rec_id, is_sandbox)
