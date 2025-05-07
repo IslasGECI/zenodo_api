@@ -2,7 +2,6 @@ from zenodo_api.new_version import (
     create_draft_of_new_version,
     get_latest_version_id,
     upload_file_in_new_deposition,
-    _publish_new_version,
     open_new_deposition,
 )
 from zenodo_api.upload_files import load_access_token
@@ -10,8 +9,6 @@ from zenodo_api.retrieve import search_deposition_by_title
 
 import requests
 import time
-import os
-import pytest
 
 
 def test_get_latest_version_id():
