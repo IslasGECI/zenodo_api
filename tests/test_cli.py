@@ -38,7 +38,7 @@ def test_publish_new_version():
     assert " --is-sandbox " in gtt.strip_ansi_sequences(result.stdout)
 
     concept_rec_id = 200738
-    file_path = "tests/data/tests_cli_file.md"
+    file_path = "tests/data/test_cli_file.md"
     result = runner.invoke(
         cli,
         [
