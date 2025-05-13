@@ -21,3 +21,4 @@ RUN apt update && apt upgrade --yes && apt install --yes \
 # Instala ShellSpec
 RUN src/install_shellspec.sh
 
+RUN make install
