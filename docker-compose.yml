@@ -8,5 +8,5 @@ services:
     volumes:
       - $PWD:/workdir
     environment:
-      ACCESS_TOKEN: $ACCESS_TOKEN
+      ACCESS_TOKEN: $ZENODO_TOKEN
 
