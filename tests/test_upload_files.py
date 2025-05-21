@@ -10,6 +10,7 @@ from zenodo_api.upload_files import (
     upload_metadata_in_new_record,
 )
 from zenodo_api.retrieve import search_deposition_by_title
+import re
 
 
 def tests_call_depositions():
@@ -60,6 +61,12 @@ def tests_upload_metadata():
         "Grupo de Ecología y Conservación de Islas"
         in obtained_json["metadata"]["creators"][0]["name"]
     )
+
+    pattern = re.compile("^2[0-9]{3}-")
+    date = obtained_json["metadata"]["publication_date"]
+    is_date = bool(pattern.match(date))
+    assert is_date
+
     assert obtained_json["metadata"]["access_right"] == "open"
     time.sleep(1)
     access_token = load_access_token()

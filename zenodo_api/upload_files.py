@@ -2,6 +2,7 @@ import requests
 import os
 import json
 import pathlib
+from datetime import date
 
 
 def call_depositions():
@@ -60,7 +61,10 @@ def upload_metadata_in_new_record(data_dict):
 
 
 def upload_metadata(previous_metadata, deposition_id):
-    default_metadata = {"creators": [{"name": "Grupo de Ecología y Conservación de Islas"}]}
+    default_metadata = {
+        "creators": [{"name": "Grupo de Ecología y Conservación de Islas"}],
+        "publication_date": str(date.today()),
+    }
     previous_metadata.update(default_metadata)
     new_metadata = {"metadata": previous_metadata}
     headers = {"Authorization": f"Bearer {load_access_token()}", "Content-Type": "application/json"}

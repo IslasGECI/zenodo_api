@@ -39,7 +39,6 @@ def get_latest_version_id(concept_rec_id, is_sandbox):
     base_url = url_selector(tests=is_sandbox) + "/records"
 
     headers = {"Authorization": f"Bearer {access_token}"}
-
     response = requests.get(f"{base_url}/{concept_rec_id}", headers=headers)
 
     return response.json()["id"]
