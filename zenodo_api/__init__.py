@@ -1,6 +1,6 @@
 """A template Python module"""
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 from .upload_files import *  # noqa
 from .url_selector import *  # noqa
 from .retrieve import *  # noqa

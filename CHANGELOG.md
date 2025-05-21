@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2025-05-21
+
+### Fixed
+- `upload_metadata` now includes publication date
+
 ## [0.2.0] - 2025-05-07
 
 ### Added
