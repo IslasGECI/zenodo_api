@@ -14,7 +14,7 @@ import re
 
 
 def tests_call_depositions():
-    obtained = call_depositions()
+    obtained = call_depositions(is_sandbox=True)
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(obtained.json(), f, ensure_ascii=False, indent=4)
     assert obtained.status_code == 200
