@@ -1,7 +1,7 @@
 import requests
 import os
 import json
-import pathlib 
+import pathlib
 from datetime import date
 from zenodo_api.url_selector import url_selector
 
