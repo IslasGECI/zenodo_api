@@ -5,6 +5,7 @@ import pathlib
 from datetime import date
 from zenodo_api.url_selector import url_selector
 
+
 def call_depositions(is_sandbox):
     ACCESS_TOKEN = load_access_token()
     url_api = url_selector(is_sandbox)
