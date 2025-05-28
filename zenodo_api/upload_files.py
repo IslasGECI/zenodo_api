@@ -3,12 +3,14 @@ import os
 import json
 import pathlib
 from datetime import date
+from zenodo_api.url_selector import url_selector
 
 
-def call_depositions():
+def call_depositions(is_sandbox):
     ACCESS_TOKEN = load_access_token()
+    url_api = url_selector(is_sandbox)
     empty_upload = requests.get(
-        "https://sandbox.zenodo.org/api/deposit/depositions",
+        url_api + "/deposit/depositions",
         [("access_token", ACCESS_TOKEN), ("size", 200), ("all_versions", "true")],
     )
     return empty_upload
