@@ -26,7 +26,7 @@ def test_load_access_token():
 
 
 def test_create_empty_upload():
-    obtained = create_deposition_in_new_record()
+    obtained = create_deposition_in_new_record(is_sandbox=True)
     assert obtained.status_code == 201
 
 
