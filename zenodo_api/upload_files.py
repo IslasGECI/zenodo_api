@@ -20,7 +20,7 @@ def load_access_token():
     return os.environ.get("ACCESS_TOKEN")
 
 
-def xxcreate_deposition_in_new_record(is_sandbox):
+def create_deposition_in_new_record(is_sandbox):
     url_api = url_selector(is_sandbox)
     headers = {"Authorization": f"Bearer {load_access_token()}", "Content-Type": "application/json"}
     response = requests.post(
@@ -33,7 +33,7 @@ def xxcreate_deposition_in_new_record(is_sandbox):
 
 def upload_file_in_new_record(file_path):
     is_sandbox = True
-    empty_upload = xxcreate_deposition_in_new_record(is_sandbox)
+    empty_upload = create_deposition_in_new_record(is_sandbox)
 
     bucket_url = empty_upload.json()["links"]["bucket"]
 
@@ -59,7 +59,7 @@ def upload_file(bucket_url, file_path):
 
 def upload_metadata_in_new_record(data_dict):
     is_sandbox = True
-    empty_upload = xxcreate_deposition_in_new_record(is_sandbox)
+    empty_upload = create_deposition_in_new_record(is_sandbox)
     deposition_id = empty_upload.json()["id"]
     response = upload_metadata(data_dict["metadata"], deposition_id)
     return response
