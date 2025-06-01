@@ -5,7 +5,7 @@ import time
 from zenodo_api.upload_files import (
     call_depositions,
     load_access_token,
-    create_deposition_in_new_record,
+    xxcreate_deposition_in_new_record,
     upload_file_in_new_record,
     upload_metadata_in_new_record,
 )
@@ -26,7 +26,7 @@ def test_load_access_token():
 
 
 def test_create_empty_upload():
-    obtained = create_deposition_in_new_record(is_sandbox=True)
+    obtained = xxcreate_deposition_in_new_record(is_sandbox=True)
     assert obtained.status_code == 201
 
 
