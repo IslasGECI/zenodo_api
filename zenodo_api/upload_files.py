@@ -31,12 +31,7 @@ def create_deposition_in_new_record(is_sandbox):
     return response
 
 
-def upload_file_in_new_record(file_path):
-    is_sandbox = True
-    return xxupload_file_in_new_record(file_path, is_sandbox)
-
-
-def xxupload_file_in_new_record(file_path, is_sandbox):
+def upload_file_in_new_record(file_path, is_sandbox):
     empty_upload = create_deposition_in_new_record(is_sandbox)
 
     bucket_url = empty_upload.json()["links"]["bucket"]

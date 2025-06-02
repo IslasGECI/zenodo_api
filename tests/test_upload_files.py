@@ -32,7 +32,7 @@ def test_create_empty_upload():
 
 def tests_upload_new_file():
     file_path = "tests/data/tests_file.txt"
-    obtained = upload_file_in_new_record(file_path)
+    obtained = upload_file_in_new_record(file_path, is_sandbox=True)
     assert obtained["response_upload"].status_code == 201
     assert "latest_draft" in obtained.keys()
 
