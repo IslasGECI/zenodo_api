@@ -1,5 +1,5 @@
 import requests
-from zenodo_api.upload_files import load_access_token, upload_file, upload_metadata
+from zenodo_api.upload_files import load_access_token, upload_file, xxupload_metadata
 from zenodo_api.url_selector import url_selector
 
 
@@ -58,7 +58,7 @@ def create_draft_of_new_version(latest_version_id, is_sandbox):
 def upload_new_deposition_metadata(new_deposition_json):
     new_deposition_id = new_deposition_json["id"]
     previous_metadata = new_deposition_json["metadata"]
-    upload_metadata(previous_metadata, new_deposition_id)
+    xxupload_metadata(previous_metadata, new_deposition_id, is_sandbox=True)
 
 
 def delete_previous_files(new_deposition_json):
