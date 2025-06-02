@@ -59,11 +59,11 @@ def upload_file(bucket_url, file_path):
 def upload_metadata_in_new_record(data_dict, is_sandbox):
     empty_upload = create_deposition_in_new_record(is_sandbox)
     deposition_id = empty_upload.json()["id"]
-    response = xxupload_metadata(data_dict["metadata"], deposition_id, is_sandbox)
+    response = upload_metadata(data_dict["metadata"], deposition_id, is_sandbox)
     return response
 
 
-def xxupload_metadata(previous_metadata, deposition_id, is_sandbox):
+def upload_metadata(previous_metadata, deposition_id, is_sandbox):
     default_metadata = {
         "creators": [{"name": "Grupo de Ecología y Conservación de Islas"}],
         "publication_date": str(date.today()),
