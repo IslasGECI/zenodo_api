@@ -56,8 +56,7 @@ def upload_file(bucket_url, file_path):
     return response_upload
 
 
-def upload_metadata_in_new_record(data_dict):
-    is_sandbox = True
+def xxupload_metadata_in_new_record(data_dict, is_sandbox):
     empty_upload = create_deposition_in_new_record(is_sandbox)
     deposition_id = empty_upload.json()["id"]
     response = upload_metadata(data_dict["metadata"], deposition_id)

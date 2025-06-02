@@ -7,7 +7,7 @@ from zenodo_api.upload_files import (
     load_access_token,
     create_deposition_in_new_record,
     upload_file_in_new_record,
-    upload_metadata_in_new_record,
+    xxupload_metadata_in_new_record,
 )
 from zenodo_api.retrieve import search_deposition_by_title
 import re
@@ -53,7 +53,7 @@ def tests_upload_metadata():
             "description": "This is my first upload",
         }
     }
-    obtained = upload_metadata_in_new_record(data_dict)
+    obtained = xxupload_metadata_in_new_record(data_dict, is_sandbox=True)
     assert obtained.status_code == 200
 
     obtained_json = obtained.json()
