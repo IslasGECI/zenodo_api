@@ -7,7 +7,7 @@ def _publish_new_version(concept_rec_id, file_path, is_sandbox):
     new_deposition = open_new_deposition(concept_rec_id, is_sandbox)
 
     new_deposition_json = new_deposition.json()
-    xxupload_file_in_new_deposition(new_deposition_json, file_path, is_sandbox)
+    upload_file_in_new_deposition(new_deposition_json, file_path, is_sandbox)
 
     access_token = load_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
@@ -26,7 +26,7 @@ def open_new_deposition(concept_rec_id, is_test):
     return new_deposition
 
 
-def xxupload_file_in_new_deposition(new_deposition_json, file_path, is_sandbox):
+def upload_file_in_new_deposition(new_deposition_json, file_path, is_sandbox):
     upload_new_deposition_metadata(new_deposition_json, is_sandbox)
     delete_previous_files(new_deposition_json)
     bucket_url = new_deposition_json["links"]["bucket"]
