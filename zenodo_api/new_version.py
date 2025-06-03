@@ -28,7 +28,7 @@ def open_new_deposition(concept_rec_id, is_test):
 
 def upload_file_in_new_deposition(new_deposition_json, file_path):
     is_sandbox = True
-    xxupload_new_deposition_metadata(new_deposition_json, is_sandbox)
+    upload_new_deposition_metadata(new_deposition_json, is_sandbox)
     delete_previous_files(new_deposition_json)
     bucket_url = new_deposition_json["links"]["bucket"]
     response = upload_file(bucket_url, file_path)
@@ -56,7 +56,7 @@ def create_draft_of_new_version(latest_version_id, is_sandbox):
     return response
 
 
-def xxupload_new_deposition_metadata(new_deposition_json, is_sandbox):
+def upload_new_deposition_metadata(new_deposition_json, is_sandbox):
     new_deposition_id = new_deposition_json["id"]
     previous_metadata = new_deposition_json["metadata"]
     upload_metadata(previous_metadata, new_deposition_id, is_sandbox)
