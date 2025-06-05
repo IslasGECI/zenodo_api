@@ -26,13 +26,13 @@ def test_load_access_token():
 
 
 def test_create_empty_upload():
-    obtained = create_deposition_in_new_record()
+    obtained = create_deposition_in_new_record(is_sandbox=True)
     assert obtained.status_code == 201
 
 
 def tests_upload_new_file():
     file_path = "tests/data/tests_file.txt"
-    obtained = upload_file_in_new_record(file_path)
+    obtained = upload_file_in_new_record(file_path, is_sandbox=True)
     assert obtained["response_upload"].status_code == 201
     assert "latest_draft" in obtained.keys()
 
@@ -53,7 +53,7 @@ def tests_upload_metadata():
             "description": "This is my first upload",
         }
     }
-    obtained = upload_metadata_in_new_record(data_dict)
+    obtained = upload_metadata_in_new_record(data_dict, is_sandbox=True)
     assert obtained.status_code == 200
 
     obtained_json = obtained.json()

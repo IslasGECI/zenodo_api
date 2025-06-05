@@ -20,18 +20,19 @@ def load_access_token():
     return os.environ.get("ACCESS_TOKEN")
 
 
-def create_deposition_in_new_record():
+def create_deposition_in_new_record(is_sandbox):
+    url_api = url_selector(is_sandbox)
     headers = {"Authorization": f"Bearer {load_access_token()}", "Content-Type": "application/json"}
     response = requests.post(
-        "https://sandbox.zenodo.org/api/deposit/depositions",
+        url_api + "/deposit/depositions",
         json={},
         headers=headers,
     )
     return response
 
 
-def upload_file_in_new_record(file_path):
-    empty_upload = create_deposition_in_new_record()
+def upload_file_in_new_record(file_path, is_sandbox):
+    empty_upload = create_deposition_in_new_record(is_sandbox)
 
     bucket_url = empty_upload.json()["links"]["bucket"]
 
@@ -55,14 +56,14 @@ def upload_file(bucket_url, file_path):
     return response_upload
 
 
-def upload_metadata_in_new_record(data_dict):
-    empty_upload = create_deposition_in_new_record()
+def upload_metadata_in_new_record(data_dict, is_sandbox):
+    empty_upload = create_deposition_in_new_record(is_sandbox)
     deposition_id = empty_upload.json()["id"]
-    response = upload_metadata(data_dict["metadata"], deposition_id)
+    response = upload_metadata(data_dict["metadata"], deposition_id, is_sandbox)
     return response
 
 
-def upload_metadata(previous_metadata, deposition_id):
+def upload_metadata(previous_metadata, deposition_id, is_sandbox):
     default_metadata = {
         "creators": [{"name": "Grupo de Ecología y Conservación de Islas"}],
         "publication_date": str(date.today()),
@@ -70,8 +71,9 @@ def upload_metadata(previous_metadata, deposition_id):
     previous_metadata.update(default_metadata)
     new_metadata = {"metadata": previous_metadata}
     headers = {"Authorization": f"Bearer {load_access_token()}", "Content-Type": "application/json"}
+    url_api = url_selector(is_sandbox)
     response = requests.put(
-        f"https://sandbox.zenodo.org/api/deposit/depositions/{deposition_id}",
+        url_api + f"/deposit/depositions/{deposition_id}",
         data=json.dumps(new_metadata),
         headers=headers,
     )

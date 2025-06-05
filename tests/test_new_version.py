@@ -44,7 +44,7 @@ def test_upload_file_in_new_deposition():
 
     new_deposition = open_new_deposition(concept_rec_id, is_sandbox)
     new_deposition_json = new_deposition.json()
-    obtained = upload_file_in_new_deposition(new_deposition_json, file_path)
+    obtained = upload_file_in_new_deposition(new_deposition_json, file_path, is_sandbox)
     assert obtained.status_code == 201
     time.sleep(1)
     latest_draft_link = new_deposition_json["links"]["latest_draft"]
