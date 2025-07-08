@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Removed
+
+### Fixed
+
+
+## [0.3.0] - 2025-07-08
+
+### Added
+- CLI command `download-from-geci-zenodo` now can retrieve restricted files
+
+
 ## [0.2.2] - 2025-06-04
 
 ### Fixed
