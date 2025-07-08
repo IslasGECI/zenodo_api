@@ -45,7 +45,10 @@ def download_file_by_doi(doi, is_sandbox):
 
 def download_file(id, id_file, url_api):
     download_info = get_download(id, id_file, url_api)
-    download_response = requests.get(download_info["url"])
+    download_response = requests.get(
+        download_info["url"],
+        headers={"Authorization": f"Bearer {load_access_token()}"},
+    )
 
     with open(download_info["filename"], mode="wb") as file:
         file.write(download_response.content)
@@ -74,6 +77,11 @@ def retrieve_file_info(id, id_file, url_api):
 
 def extract_record_id_and_file_id(search_response):
     record_id = search_response["hits"]["hits"][0]["id"]
-    file_id = search_response["hits"]["hits"][0]["files"][0]["id"]
+    access_token = load_access_token()
+    response_info = requests.get(
+        search_response["hits"]["hits"][0]["links"]["files"],
+        headers={"Authorization": f"Bearer {access_token}"},
+    )
+    file_id = response_info.json()["entries"][0]["file_id"]
 
     return {"record_id": record_id, "file_id": file_id}
