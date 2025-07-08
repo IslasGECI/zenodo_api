@@ -39,7 +39,8 @@ def download_file_by_doi(doi, is_sandbox):
     url_api = url_selector(tests=is_sandbox)
     response_info = search_by_doi(doi, url_api)
     extracted_id = extract_record_id_and_file_id(response_info.json())
-    downloaded_file = download_file(extracted_id["record_id"], extracted_id["file_id"], url_api)
+    for file in extracted_id["file_id"]:
+        downloaded_file = download_file(extracted_id["record_id"], file, url_api)
     return downloaded_file
 
 
@@ -82,6 +83,7 @@ def extract_record_id_and_file_id(search_response):
         search_response["hits"]["hits"][0]["links"]["files"],
         headers={"Authorization": f"Bearer {access_token}"},
     )
-    file_id = response_info.json()["entries"][0]["file_id"]
+    response_files = response_info.json()
+    file_id = [file_entry["file_id"] for file_entry in response_files["entries"]]
 
     return {"record_id": record_id, "file_id": file_id}
