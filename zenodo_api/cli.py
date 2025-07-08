@@ -1,13 +1,14 @@
 import typer
 from zenodo_api.retrieve import download_file_by_doi
 from zenodo_api.new_version import _publish_new_version
+import zenodo_api as zp
 
 cli = typer.Typer()
 
 
 @cli.command()
 def version():
-    pass
+    print(zp.__version__)
 
 
 @cli.command()
